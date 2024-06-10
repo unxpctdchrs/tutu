@@ -7,6 +7,8 @@ import com.tuners.tutu.data.Repository
 import com.tuners.tutu.di.Injection
 import com.tuners.tutu.ui.login.LoginViewModel
 import com.tuners.tutu.ui.main.MainViewModel
+import com.tuners.tutu.ui.main.profile.ProfileViewModel
+import com.tuners.tutu.ui.register.student.StudentRegisterViewModel
 
 class ViewModelFactory(private val repository: Repository) : ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
@@ -17,6 +19,12 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.N
             }
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
+                ProfileViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(StudentRegisterViewModel::class.java) -> {
+                StudentRegisterViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel Class: " + modelClass.name)
         }

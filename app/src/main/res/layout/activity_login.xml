@@ -1,22 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.login.LoginActivity"
-    android:background="@color/white" >
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="0dp">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_login"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="@string/login"
-        android:layout_marginHorizontal="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/bglogin"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:src="@drawable/bglogin"
+            android:layout_marginTop="-5dp"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/logo"
+            android:layout_width="178dp"
+            android:layout_height="92dp"
+            android:src="@drawable/logowithname"
+            android:layout_marginBottom="60dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_desc"
+            style="@style/titlePoppinsSemiBold"
+            android:textSize="10sp"
+            tools:ignore="SmallSp"
+            android:textAlignment="center"
+            android:ems="20"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="40dp"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/username_inputLayout"
+            style="@style/custom_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username"
+            app:startIconDrawable="@drawable/ic_mail"
+            app:startIconTint="@color/gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="20"
+                android:inputType="text"
+                android:maxLines="1"
+                style="@style/titlePoppinsBold"
+                android:textColor="@color/gray"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_inputLayout"
+            style="@style/custom_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            app:startIconDrawable="@drawable/ic_key"
+            app:startIconTint="@color/gray"
+            android:layout_marginTop="5dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:ems="20"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                style="@style/titlePoppinsBold"
+                android:textColor="@color/gray"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/login"
+                style="@style/titlePoppinsBold"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                app:cornerRadius="20dp"
+                android:backgroundTint="@color/dark_blue"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"/>
+
+            <ProgressBar
+                android:id="@+id/loader"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:translationZ="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                tools:visibility="visible"
+                android:visibility="gone"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/belum_memiliki_akun"
+                style="@style/titlePoppinsRegular"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/tv_btn_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/daftar_disini"
+                style="@style/titlePoppinsSemiBold"
+                android:textSize="14sp"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/dark_blue"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/atau_masuk_dengan"
+            style="@style/titlePoppinsRegular"
+            android:textSize="12sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_login_google"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="@string/google"
+                android:textAllCaps="false"
+                app:cornerRadius="20dp"
+                style="@style/titlePoppinsBold"
+                android:textSize="16sp"
+                android:backgroundTint="@color/white"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/google"
+                android:layout_gravity="center|start"
+                android:translationZ="5dp"
+                android:layout_marginStart="10dp"
+                tools:ignore="ContentDescription" />
+        </FrameLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -2,16 +2,20 @@ package com.tuners.tutu.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import com.tuners.tutu.R
 import com.tuners.tutu.data.local.pref.UserModel
 import com.tuners.tutu.databinding.ActivityLoginBinding
 import com.tuners.tutu.helper.ViewModelFactory
 import com.tuners.tutu.ui.main.MainActivity
+import com.tuners.tutu.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
@@ -32,13 +36,45 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            loginViewModel.saveSession(UserModel(
-                userId = "test",
-                name = "budi",
-                isLoggedIn = true
-            ))
-            startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+            loginViewModel.login(binding.edtUsername.text.toString().trim(), binding.edtPassword.text.toString().trim())
+
+            loginViewModel.loginResponse.observe(this) { user ->
+                if (!user.error) {
+                    val userToSave = UserModel(
+                        user.loginResult.first().uuid,
+                        user.loginResult.first().username,
+                        true
+                    )
+                    loginViewModel.saveSession(userToSave)
+                }
+            }
+        }
+
+        loginViewModel.getSession().observe(this) { user ->
+            if (user.isLoggedIn) {
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                finish()
+            }
+        }
+
+        binding.btnLoginGoogle.setOnClickListener {
+            Toast.makeText(this, "On Progress..", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.tvBtnRegister.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
             finish()
         }
+
+        loginViewModel.isLoading.observe(this) { isLoading ->
+            if (isLoading) {
+                binding.btnLogin.text = ""
+                setLoading(isLoading)
+            }
+        }
+    }
+
+    private fun setLoading(isLoading: Boolean) {
+        if (isLoading) binding.loader.visibility = View.VISIBLE else binding.loader.visibility = View.GONE
     }
 }

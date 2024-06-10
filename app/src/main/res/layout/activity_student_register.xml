@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.register.student.StudentRegisterActivity"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="0dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/bglogin"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:src="@drawable/bglogin"
+            android:layout_marginTop="-5dp"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/logo"
+            android:layout_width="178dp"
+            android:layout_height="92dp"
+            android:src="@drawable/logowithname"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="20dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/yellow"
+            android:layout_width="126dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="-20dp"
+            android:backgroundTint="@color/dark_yellow"
+            android:translationZ="5dp"
+            app:layout_constraintEnd_toEndOf="@id/blue"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toStartOf="@id/blue"
+            app:layout_constraintTop_toTopOf="@id/blue"
+            app:cardCornerRadius="11dp">
+
+            <TextView
+                style="@style/titlePoppinsBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/masukkan_datamu"
+                android:textSize="11sp"
+                android:layout_gravity="center"
+                android:textColor="@color/white"/>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/dark_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="11dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="18dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="25dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pilih_jenjang_pendidikan"
+                    style="@style/titlePoppinsBold"
+                    android:textSize="11sp"
+                    android:textColor="@color/white"/>
+
+                <RadioGroup
+                    android:id="@+id/radio_jenjang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/siswa_btn"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/siswa"
+                        style="@style/titlePoppinsBold"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        tools:ignore="SmallSp"/>
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/mahasiswa_btn"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="@string/mahasiswa"
+                        style="@style/titlePoppinsBold"
+                        android:textSize="10sp"
+                        android:textColor="@color/white"
+                        tools:ignore="SmallSp" />
+                </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:ems="20"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    style="@style/titlePoppinsBold"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp"
+                    android:background="@drawable/rounded_edt_background"
+                    android:hint="@string/username"
+                    android:textColorHint="@color/dark_blue"
+                    android:paddingHorizontal="15dp"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_birth"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:ems="20"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:hint="@string/tempat_tanggal_lahir"
+                    android:textColorHint="@color/dark_blue"
+                    style="@style/titlePoppinsBold"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp"
+                    android:background="@drawable/rounded_edt_background"
+                    android:paddingHorizontal="15sp"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:ems="20"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:hint="@string/email"
+                    android:textColorHint="@color/dark_blue"
+                    style="@style/titlePoppinsBold"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp"
+                    android:background="@drawable/rounded_edt_background"
+                    android:paddingHorizontal="15sp"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:ems="20"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    style="@style/titlePoppinsBold"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp"
+                    android:background="@drawable/rounded_edt_background"
+                    android:hint="@string/password"
+                    android:textColorHint="@color/dark_blue"
+                    android:paddingHorizontal="15sp"/>
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_phonenumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:ems="20"
+                    android:inputType="textPhonetic"
+                    android:maxLines="1"
+                    style="@style/titlePoppinsBold"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="10sp"
+                    tools:ignore="SmallSp"
+                    android:background="@drawable/rounded_edt_background"
+                    android:hint="@string/phone_number"
+                    android:textColorHint="@color/dark_blue"
+                    android:paddingHorizontal="15sp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/btn_create_account"
+            android:layout_width="70dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="-20dp"
+            android:backgroundTint="@color/dark_yellow"
+            android:translationZ="5dp"
+            app:cardCornerRadius="11dp"
+            app:layout_constraintEnd_toEndOf="@id/blue"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@id/blue"
+            app:layout_constraintTop_toBottomOf="@id/blue">
+
+            <TextView
+                style="@style/titlePoppinsBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/create_account"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

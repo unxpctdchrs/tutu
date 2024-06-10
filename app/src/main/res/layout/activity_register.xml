@@ -1,10 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.register.RegisterActivity">
+    tools:context=".ui.register.RegisterActivity"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="0dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/bglogin"
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:src="@drawable/bglogin"
+            android:layout_marginTop="-5dp"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/logo"
+            android:layout_width="178dp"
+            android:layout_height="92dp"
+            android:src="@drawable/logowithname"
+            android:layout_marginBottom="60dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_desc"
+            style="@style/titlePoppinsSemiBold"
+            android:textSize="10sp"
+            tools:ignore="SmallSp"
+            android:textAlignment="center"
+            android:ems="20"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="40dp"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/register_desc1"
+            style="@style/titlePoppinsRegular"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            android:ems="15"
+            android:layout_gravity="center"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_pelajar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="@string/pelajar"
+            style="@style/titlePoppinsBold"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="@color/dark_yellow"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_pengajar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="@string/pengajar"
+            style="@style/titlePoppinsBold"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="@color/dark_blue"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sudah_memiliki_akun"
+                style="@style/titlePoppinsRegular"
+                android:textSize="14sp"/>
+            <TextView
+                android:id="@+id/tv_btn_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/masuk_disini"
+                style="@style/titlePoppinsSemiBold"
+                android:textSize="14sp"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/dark_blue"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:src="@drawable/bocil"
+        android:layout_gravity="bottom|end"
+        tools:ignore="ContentDescription"
+        android:layout_marginBottom="-4dp"/>
+
+</com.google.android.material.card.MaterialCardView>

@@ -2,6 +2,36 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.TUTU" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="android:statusBarColor">@color/dark_blue</item>
+    </style>
+
+    <style name="titlePoppinsBold">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="titlePoppinsLight">
+        <item name="fontFamily">@font/poppins_light</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="titlePoppinsMedium">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="titlePoppinsRegular">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="titlePoppinsSemiBold">
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>
