@@ -18,8 +18,7 @@
             android:id="@+id/bglogin"
             android:layout_width="match_parent"
             android:layout_height="230dp"
-            android:src="@drawable/bglogin"
-            android:layout_marginTop="-5dp"/>
+            android:src="@drawable/bg_login2"/>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/logo"

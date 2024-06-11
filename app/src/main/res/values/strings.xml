@@ -8,7 +8,7 @@
     <string name="login">Login</string>
     <string name="title_message">Pesan</string>
     <string name="message">Message</string>
-    <string name="login_desc">Menyediakan tutorial khusus pengerjaan tugas akuntansi, bersama dengan tutor kepercayaan pilihanmu</string>
+    <string name="login_desc">Menyediakan tutorial pengerjaan tugas akuntansi,bersama dengan mentor terpercaya pilihanmu.</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="logout">Logout</string>
@@ -35,4 +35,29 @@
     <string name="hot">Yang sedang hangat</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="you_sure_want_to_exit">Yakin untuk keluar?</string>
+    <string name="no">Tidak</string>
+    <string name="yes">Ya</string>
+    <string name="save">Simpan</string>
+    <string name="ubah_pendidikan">Ubah Jenjang Pendidikan</string>
+    <string name="notam">Silahkan isi terlebih dahulu!</string>
+    <string name="search_message">Cari Pesan</string>
+    <string name="search_home">Cari video, latihan soal, dan mentor</string>
+    <string name="search_mentor">Cari atau lihat rekomendasi mentor</string>
+    <string name="online_mentors">Mentor yang sedang aktif</string>
+    <string name="orders">Pemesanan</string>
+    <string name="chosen">Dipilih</string>
+    <string name="placeholder_name">Budi</string>
+    <string name="placeholder_rating">4.5</string>
+    <string name="choose_consultation_method">Pilih Metode Konsultasi :</string>
+    <string name="via_chat">Via Chat</string>
+    <string name="via_zoom_chat">Via Zoom + Chat</string>
+    <string name="choose_consultation_duration">Pilih Durasi Konsultasi :</string>
+    <string name="_15min">15 menit</string>
+    <string name="_30min">30 menit</string>
+    <string name="_1jam">1 jam</string>
+    <string name="_2jam">2 jam</string>
+    <string name="next">Berikutnya</string>
+    <string name="cancel">Batal</string>
+    <string name="order_history">Riwayat Pesanan</string>
 </resources>

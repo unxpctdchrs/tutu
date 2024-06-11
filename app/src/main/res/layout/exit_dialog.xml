@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="140dp"
+    app:cardCornerRadius="18dp"
+    android:layout_gravity="center"
+    android:backgroundTint="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/dark_yellow"
+            android:text="@string/you_sure_want_to_exit"
+            style="@style/titlePoppinsMedium"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+            
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_logout_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="20dp"
+                android:backgroundTint="@color/white"
+                style="@style/titlePoppinsMedium"
+                android:textSize="15sp"
+                app:cornerRadius="7dp"
+                android:textColor="@color/dark_blue"
+                app:strokeColor="@color/dark_blue"
+                app:strokeWidth="1dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_logout_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/yes"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="20dp"
+                android:backgroundTint="@color/dark_blue"
+                style="@style/titlePoppinsMedium"
+                android:textSize="15sp"
+                app:cornerRadius="7dp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="com.tuners.tutu.ui.main.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_consultFragment2"
+            app:destination="@id/consultFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
@@ -21,4 +25,9 @@
         android:name="com.tuners.tutu.ui.main.message.MessageFragment"
         android:label="fragment_message"
         tools:layout="@layout/fragment_message" />
+    <fragment
+        android:id="@+id/consultFragment"
+        android:name="com.tuners.tutu.ui.main.home.consult.ConsultFragment"
+        android:label="fragment_consult"
+        tools:layout="@layout/fragment_consult" />
 </navigation>

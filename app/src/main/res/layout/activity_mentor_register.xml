@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.register.student.StudentRegisterActivity"
+    tools:context=".ui.register.mentor.MentorRegisterActivity"
     android:backgroundTint="@color/white"
     app:cardCornerRadius="0dp">
 
@@ -32,7 +32,8 @@
         android:layout_width="match_parent"
         android:layout_height="380dp"
         android:layout_gravity="center"
-        android:layout_marginHorizontal="20dp">
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="100dp">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/yellow"
@@ -40,7 +41,7 @@
             android:layout_height="43dp"
             android:layout_marginTop="-20dp"
             android:backgroundTint="@color/dark_yellow"
-            android:translationZ="10dp"
+            android:translationZ="5dp"
             app:layout_constraintEnd_toEndOf="@id/blue"
             app:layout_constraintHorizontal_bias="0.08"
             app:layout_constraintStart_toStartOf="@id/blue"
@@ -75,42 +76,6 @@
                 android:layout_marginHorizontal="18dp"
                 android:layout_marginTop="35dp"
                 android:layout_marginBottom="25dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pilih_jenjang_pendidikan"
-                    style="@style/titlePoppinsBold"
-                    android:textSize="11sp"
-                    android:textColor="@color/white"/>
-
-                <RadioGroup
-                    android:id="@+id/radio_jenjang"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/siswa_btn"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/siswa"
-                        style="@style/titlePoppinsBold"
-                        android:textSize="10sp"
-                        android:textColor="@color/white"
-                        tools:ignore="SmallSp"/>
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/mahasiswa_btn"
-                        android:layout_width="120dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="@string/mahasiswa"
-                        style="@style/titlePoppinsBold"
-                        android:textSize="10sp"
-                        android:textColor="@color/white"
-                        tools:ignore="SmallSp" />
-                </RadioGroup>
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_name"

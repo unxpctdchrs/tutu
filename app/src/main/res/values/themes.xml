@@ -62,4 +62,13 @@
         <item name="boxCornerRadiusTopEnd">25dp</item>
         <item name="boxCornerRadiusTopStart">25dp</item>
     </style>
+
+    <style name="ThemeOverlay.SearchView" parent="">
+        <!-- Text color -->
+        <item name="android:editTextColor">@color/black</item>
+        <item name="fontFamily">@font/poppins_light</item>
+        <item name="android:textSize">14sp</item>
+        <!-- Hint text color -->
+        <item name="android:textColorHint">@color/black</item>
+    </style>
 </resources>

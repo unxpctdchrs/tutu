@@ -1,96 +1,269 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.profile.ProfileFragment"
-    android:backgroundTint="@color/dark_blue"
-    app:cardCornerRadius="0dp">
-
-    <FrameLayout
+    android:background="@color/white">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/dark_blue"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:contentDescription="@string/logo"
-            android:src="@drawable/logo"
-            android:layout_marginVertical="30dp"
-            android:layout_marginStart="20dp"
-            android:layout_gravity="top|start" />
-
-        <ImageView
-            android:id="@+id/btn_logout"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_logout"
-            android:layout_gravity="top|end"
-            android:layout_marginVertical="50dp"
-            android:layout_marginHorizontal="30dp"/>
-    </FrameLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:backgroundTint="@color/white"
-            android:translationZ="5dp"
-            app:cardCornerRadius="200dp"
-            app:cardElevation="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/bottomcard"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/bottomcard">
-
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/bottomcard"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:outlineSpotShadowColor="@android:color/transparent"
-            app:cardCornerRadius="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5">
+            android:orientation="vertical">
 
-            <!--Edit Here-->
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:contentDescription="@string/logo"
+                android:src="@drawable/logo"
+                android:layout_marginVertical="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_gravity="top|start" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginBottom="200dp"
-                android:orientation="vertical">
+            <ImageView
+                android:id="@+id/btn_logout"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_logout"
+                android:layout_gravity="top|end"
+                android:layout_marginVertical="50dp"
+                android:layout_marginHorizontal="30dp"/>
+        </FrameLayout>
 
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <View
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:layout_constraintTop_toBottomOf="@id/bottomcard"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/white"
-            android:outlineSpotShadowColor="@android:color/transparent"
-            android:outlineAmbientShadowColor="@android:color/transparent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    
-    
-</com.google.android.material.card.MaterialCardView>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:backgroundTint="@color/white"
+                android:translationZ="5dp"
+                app:cardCornerRadius="200dp"
+                app:cardElevation="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/bottomcard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/bottomcard">
+
+                <ImageView
+                    android:id="@+id/iv_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:src="@tools:sample/avatars"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/bottomcard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:outlineSpotShadowColor="@android:color/transparent"
+                app:cardCornerRadius="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0">
+
+                <!--Edit Here-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="100dp"
+                    android:layout_marginBottom="80dp"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="365dp"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="20dp">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/blue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/dark_blue"
+                            app:cardCornerRadius="11dp"
+                            android:layout_marginTop="35dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="18dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="25dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/titlePoppinsBold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/ubah_pendidikan"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+
+                                <RadioGroup
+                                    android:id="@+id/radio_jenjang"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.radiobutton.MaterialRadioButton
+                                        android:id="@+id/siswa_btn"
+                                        style="@style/titlePoppinsBold"
+                                        android:layout_width="120dp"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/siswa"
+                                        android:textColor="@color/white"
+                                        android:textSize="10sp"
+                                        tools:ignore="SmallSp" />
+
+                                    <com.google.android.material.radiobutton.MaterialRadioButton
+                                        android:id="@+id/mahasiswa_btn"
+                                        style="@style/titlePoppinsBold"
+                                        android:layout_width="120dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
+                                        android:text="@string/mahasiswa"
+                                        android:textColor="@color/white"
+                                        android:textSize="10sp"
+                                        tools:ignore="SmallSp" />
+                                </RadioGroup>
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edt_name"
+                                    style="@style/titlePoppinsBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/rounded_edt_background"
+                                    android:ems="20"
+                                    android:hint="@string/username"
+                                    android:inputType="textPersonName"
+                                    android:maxLines="1"
+                                    android:paddingHorizontal="15dp"
+                                    android:textColor="@color/dark_blue"
+                                    android:textColorHint="@color/dark_blue"
+                                    android:textSize="10sp"
+                                    tools:ignore="SmallSp" />
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edt_birth"
+                                    style="@style/titlePoppinsBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/rounded_edt_background"
+                                    android:ems="20"
+                                    android:hint="@string/tempat_tanggal_lahir"
+                                    android:inputType="text"
+                                    android:maxLines="1"
+                                    android:paddingHorizontal="15sp"
+                                    android:textColor="@color/dark_blue"
+                                    android:textColorHint="@color/dark_blue"
+                                    android:textSize="10sp"
+                                    tools:ignore="SmallSp" />
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edt_email"
+                                    style="@style/titlePoppinsBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/rounded_edt_background"
+                                    android:ems="20"
+                                    android:hint="@string/email"
+                                    android:inputType="textEmailAddress"
+                                    android:maxLines="1"
+                                    android:paddingHorizontal="15sp"
+                                    android:textColor="@color/dark_blue"
+                                    android:textColorHint="@color/dark_blue"
+                                    android:textSize="10sp"
+                                    tools:ignore="SmallSp" />
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edt_password"
+                                    style="@style/titlePoppinsBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/rounded_edt_background"
+                                    android:ems="20"
+                                    android:hint="@string/password"
+                                    android:inputType="textPassword"
+                                    android:maxLines="1"
+                                    android:paddingHorizontal="15sp"
+                                    android:textColor="@color/dark_blue"
+                                    android:textColorHint="@color/dark_blue"
+                                    android:textSize="10sp"
+                                    tools:ignore="SmallSp" />
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/edt_phonenumber"
+                                    style="@style/titlePoppinsBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:background="@drawable/rounded_edt_background"
+                                    android:ems="20"
+                                    android:hint="@string/phone_number"
+                                    android:inputType="textPhonetic"
+                                    android:maxLines="1"
+                                    android:paddingHorizontal="15sp"
+                                    android:textColor="@color/dark_blue"
+                                    android:textColorHint="@color/dark_blue"
+                                    android:textSize="10sp"
+                                    tools:ignore="SmallSp" />
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/btn_update_user"
+                            android:layout_width="70dp"
+                            android:layout_height="32dp"
+                            android:layout_marginTop="-20dp"
+                            android:backgroundTint="@color/dark_yellow"
+                            android:translationZ="5dp"
+                            app:cardCornerRadius="11dp"
+                            app:layout_constraintEnd_toEndOf="@id/blue"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="@id/blue"
+                            app:layout_constraintTop_toBottomOf="@id/blue">
+
+                            <TextView
+                                android:id="@+id/tv_save"
+                                style="@style/titlePoppinsBold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="@string/save"
+                                android:textColor="@color/white"
+                                android:textSize="10sp"
+                                tools:ignore="SmallSp" />
+
+                            <ProgressBar
+                                android:id="@+id/loader"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                tools:visibility="visible"
+                                android:visibility="gone"
+                                android:indeterminateTint="@color/white"/>
+                        </com.google.android.material.card.MaterialCardView>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>

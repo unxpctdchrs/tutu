@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.home.consult.ConsultFragment"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="30dp"
+        android:queryHint="@string/search_mentor"
+        android:queryBackground="@android:color/transparent"
+        android:iconifiedByDefault="false"
+        android:background="@drawable/search_view_background_transparent"
+        android:theme="@style/ThemeOverlay.SearchView"
+        android:searchIcon="@drawable/ic_search" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginVertical="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/online_mentors"
+            style="@style/titlePoppinsMedium"
+            android:textSize="12sp"
+            android:layout_weight="1" />
+
+        <FrameLayout
+            android:id="@+id/btn_order_history"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_history"
+                android:layout_gravity="center|start"
+                app:tint="@color/black"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_history"
+                style="@style/titlePoppinsMedium"
+                android:textSize="12sp"
+                android:layout_gravity="end"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_mentors"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

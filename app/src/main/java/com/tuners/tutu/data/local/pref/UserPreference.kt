@@ -16,6 +16,11 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         dataStore.edit { preferences ->
             preferences[USERID_KEY] = user.userId
             preferences[NAME_KEY] = user.name
+            preferences[PASSWORD_KEY] = user.password
+            preferences[BIRTH_KEY] = user.birthDatePlace
+            preferences[PENDIDIKAN_KEY] = user.jenjangPendidikan
+            preferences[EMAIL_KEY] = user.email
+            preferences[PHONE_KEY] = user.phoneNumber
             preferences[IS_LOGGED_IN_KEY] = user.isLoggedIn
         }
     }
@@ -25,7 +30,12 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             UserModel(
                 preferences[USERID_KEY] ?: "",
                 preferences[NAME_KEY] ?: "",
-                preferences[IS_LOGGED_IN_KEY] ?: false,
+                preferences[PASSWORD_KEY] ?: "",
+                preferences[BIRTH_KEY] ?: "",
+                preferences[PENDIDIKAN_KEY] ?: "",
+                preferences[EMAIL_KEY] ?: "",
+                preferences[PHONE_KEY] ?: "",
+                preferences[IS_LOGGED_IN_KEY] ?: false
             )
         }
     }
@@ -42,6 +52,11 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
 
         private val USERID_KEY = stringPreferencesKey("userId")
         private val NAME_KEY = stringPreferencesKey("name")
+        private val PASSWORD_KEY = stringPreferencesKey("password")
+        private val BIRTH_KEY = stringPreferencesKey("birthDatePlace")
+        private val PENDIDIKAN_KEY = stringPreferencesKey("jenjangPendidikan")
+        private val EMAIL_KEY = stringPreferencesKey("email")
+        private val PHONE_KEY = stringPreferencesKey("phoneNumber")
         private val IS_LOGGED_IN_KEY = booleanPreferencesKey("isLoggedIn")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {

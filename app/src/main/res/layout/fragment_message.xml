@@ -1,13 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.message.MessageFragment"
-    android:backgroundTint="@color/white"
-    app:cardCornerRadius="0dp">
+    android:background="@color/white"
+    android:layout_marginBottom="0dp"
+    android:orientation="vertical">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_message"
+        style="@style/titlePoppinsMedium"
+        android:textSize="32sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="30dp"/>
 
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="20dp"
+        android:queryHint="@string/search_message"
+        android:queryBackground="@android:color/transparent"
+        android:iconifiedByDefault="false"
+        android:background="@drawable/search_view_background_transparent"
+        android:theme="@style/ThemeOverlay.SearchView"
+        android:searchIcon="@drawable/ic_search"/>
 
-</com.google.android.material.card.MaterialCardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_users"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"/>
+</LinearLayout>

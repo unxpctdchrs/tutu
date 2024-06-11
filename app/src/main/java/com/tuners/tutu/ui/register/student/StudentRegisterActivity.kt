@@ -3,6 +3,7 @@ package com.tuners.tutu.ui.register.student
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -52,20 +53,31 @@ class StudentRegisterActivity : AppCompatActivity() {
             }
             Log.d("StudentRegister", selectedPendidikan)
 
-            studentRegisterViewModel.register(
-                binding.edtName.text.toString().trim(),
-                binding.edtPassword.text.toString().trim(),
-                binding.edtBirth.text.toString().trim(),
-                binding.edtEmail.text.toString().trim(),
-                binding.edtPhonenumber.text.toString().trim(),
-                selectedPendidikan
-            )
+            if (!binding.siswaBtn.isChecked && !binding.mahasiswaBtn.isChecked) {
+                Toast.makeText(this@StudentRegisterActivity, "Silahkan pilih jenjang pendidikan terlebih dahulu!", Toast.LENGTH_SHORT).show()
+            }
+            else if (binding.edtName.text?.isEmpty()!!) binding.edtName.error = getString(R.string.notam)
+            else if (binding.edtPassword.text?.isEmpty()!!) binding.edtPassword.error = getString(R.string.notam)
+            else if (binding.edtBirth.text?.isEmpty()!!) binding.edtBirth.error = getString(R.string.notam)
+            else if (binding.edtEmail.text?.isEmpty()!!) binding.edtEmail.error = getString(R.string.notam)
+            else if (binding.edtPhonenumber.text?.isEmpty()!!) binding.edtPhonenumber.error = getString(R.string.notam)
+            else {
+                studentRegisterViewModel.register(
+                    binding.edtName.text.toString().trim(),
+                    binding.edtPassword.text.toString().trim(),
+                    binding.edtBirth.text.toString().trim(),
+                    binding.edtEmail.text.toString().trim(),
+                    binding.edtPhonenumber.text.toString().trim(),
+                    selectedPendidikan
+                )
+            }
         }
 
         studentRegisterViewModel.registerResponse.observe(this) { response ->
             if (!response.error) {
                 startActivity(Intent(this@StudentRegisterActivity, LoginActivity::class.java))
                 finish()
+                Toast.makeText(this@StudentRegisterActivity, "Account Created", Toast.LENGTH_SHORT).show()
             }
         }
     }

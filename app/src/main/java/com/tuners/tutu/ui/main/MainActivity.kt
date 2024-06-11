@@ -3,15 +3,19 @@ package com.tuners.tutu.ui.main
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.button.MaterialButton
 import com.tuners.tutu.R
 import com.tuners.tutu.databinding.ActivityMainBinding
 import com.tuners.tutu.helper.ViewModelFactory
@@ -24,21 +28,32 @@ class MainActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(this)
     }
 
-    private lateinit var navController: NavController
+    private lateinit var navView: BottomNavigationView
+    private val navController : NavController by lazy {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        navHostFragment.navController
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
-        navController = findNavController(R.id.nav_host_fragment_activity_main)
+        navView = binding.navView
         navView.setupWithNavController(navController)
 
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
         binding.messageFab.setOnClickListener {
             navController.navigate(R.id.navigation_message)
+        }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.navigation_message -> {
+                    binding.coordinator.visibility = View.GONE
+                }
+            }
         }
 
         mainViewModel.getSession().observe(this) { user ->
@@ -53,15 +68,28 @@ class MainActivity : AppCompatActivity() {
         override fun handleOnBackPressed() {
             when (navController.currentDestination?.id) {
                 R.id.navigation_home -> {
-                    Toast.makeText(this@MainActivity, "woah", Toast.LENGTH_SHORT).show()
-                }
-                R.id.navigation_message -> {
-                    binding.messageFab.setImageDrawable(ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_message_black))
-                    navController.popBackStack(R.id.navigation_home, false)
+                    val customLayout = layoutInflater.inflate(R.layout.exit_dialog, null)
+                    val alertDialogBuilder = AlertDialog.Builder(this@MainActivity)
+                        .setView(customLayout)
+
+                    val yesBtn = customLayout.findViewById<MaterialButton>(R.id.btn_logout_yes)
+                    val noBtn = customLayout.findViewById<MaterialButton>(R.id.btn_logout_no)
+
+                    val alertDialog = alertDialogBuilder.create()
+                    alertDialog.show()
+
+                    yesBtn.setOnClickListener {
+                        mainViewModel.logout()
+                        alertDialog.dismiss()
+                    }
+
+                    noBtn.setOnClickListener {
+                        alertDialog.dismiss()
+                    }
                 }
                 else -> {
                     navController.popBackStack(R.id.navigation_home, false)
-                    binding.messageFab.setImageDrawable(ContextCompat.getDrawable(this@MainActivity, R.drawable.ic_message))
+                    binding.coordinator.visibility = View.VISIBLE
                 }
             }
         }

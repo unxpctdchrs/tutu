@@ -52,7 +52,12 @@
                 android:layout_gravity="center|top"
                 android:layout_marginHorizontal="28dp"
                 android:layout_marginTop="20dp"
-                android:background="@color/white"/>
+                android:queryHint="@string/search_home"
+                android:queryBackground="@android:color/transparent"
+                android:iconifiedByDefault="false"
+                android:background="@drawable/search_view_background"
+                android:theme="@style/ThemeOverlay.SearchView"
+                android:searchIcon="@drawable/ic_search"/>
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -218,5 +223,4 @@
                 android:outlineAmbientShadowColor="@android:color/transparent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
 </ScrollView>

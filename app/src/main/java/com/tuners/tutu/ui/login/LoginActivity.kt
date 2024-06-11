@@ -41,9 +41,14 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.loginResponse.observe(this) { user ->
                 if (!user.error) {
                     val userToSave = UserModel(
-                        user.loginResult.first().uuid,
-                        user.loginResult.first().username,
-                        true
+                        userId = user.loginResult.first().uuid,
+                        name = user.loginResult.first().username,
+                        password = user.loginResult.first().password,
+                        birthDatePlace = user.loginResult.first().birthDatePlace,
+                        jenjangPendidikan = user.loginResult.first().jenjangPendidikan,
+                        email = user.loginResult.first().email,
+                        phoneNumber = user.loginResult.first().phoneNumber,
+                        isLoggedIn = true
                     )
                     loginViewModel.saveSession(userToSave)
                 }
@@ -67,14 +72,17 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginViewModel.isLoading.observe(this) { isLoading ->
-            if (isLoading) {
-                binding.btnLogin.text = ""
-                setLoading(isLoading)
-            }
+            setLoading(isLoading)
         }
     }
 
     private fun setLoading(isLoading: Boolean) {
-        if (isLoading) binding.loader.visibility = View.VISIBLE else binding.loader.visibility = View.GONE
+        if (isLoading) {
+            binding.btnLogin.text = ""
+            binding.loader.visibility = View.VISIBLE
+        } else {
+            binding.btnLogin.text = getString(R.string.login)
+            binding.loader.visibility = View.GONE
+        }
     }
 }

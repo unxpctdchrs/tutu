@@ -9,7 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.transition.Fade
 import com.tuners.tutu.R
 import com.tuners.tutu.adapters.HomeRVAdapter
 import com.tuners.tutu.data.local.HomeRVData
@@ -23,6 +25,12 @@ class HomeFragment : Fragment() {
 
     private val mainViewModel by activityViewModels<MainViewModel> {
         ViewModelFactory.getInstance(requireContext())
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enterTransition = Fade()
+        exitTransition = Fade()
     }
 
     override fun onCreateView(
@@ -59,7 +67,8 @@ class HomeFragment : Fragment() {
             showToast()
         }
         binding?.btnKonsultasi?.setOnClickListener {
-            showToast()
+            val toConsultFragment = HomeFragmentDirections.actionNavigationHomeToConsultFragment2()
+            it.findNavController().navigate(toConsultFragment)
         }
     }
 

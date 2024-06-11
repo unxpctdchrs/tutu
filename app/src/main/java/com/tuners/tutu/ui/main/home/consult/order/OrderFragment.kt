@@ -1,4 +1,4 @@
-package com.tuners.tutu.ui.main.message
+package com.tuners.tutu.ui.main.home.consult.order
 
 import android.os.Bundle
 import android.view.Gravity
@@ -8,34 +8,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.transition.Slide
 import com.tuners.tutu.R
-import com.tuners.tutu.databinding.FragmentMessageBinding
+import com.tuners.tutu.databinding.FragmentOrderBinding
 
-class MessageFragment : Fragment() {
-    private var _binding: FragmentMessageBinding? = null
+class OrderFragment : Fragment() {
+    private var _binding: FragmentOrderBinding? = null
     private val binding get() = _binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enterTransition = Slide(Gravity.BOTTOM)
-        exitTransition = Slide(Gravity.TOP)
+        enterTransition = Slide(Gravity.END)
+        exitTransition = Slide(Gravity.START)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMessageBinding.inflate(inflater, container, false)
+        _binding = FragmentOrderBinding.inflate(layoutInflater)
         return binding?.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }
