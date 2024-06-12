@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
@@ -21,6 +22,8 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[PENDIDIKAN_KEY] = user.jenjangPendidikan
             preferences[EMAIL_KEY] = user.email
             preferences[PHONE_KEY] = user.phoneNumber
+            preferences[IS_MENTOR_KEY] = user.isMentor
+            preferences[BALANCE_KEY] = user.balance
             preferences[IS_LOGGED_IN_KEY] = user.isLoggedIn
         }
     }
@@ -35,6 +38,8 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
                 preferences[PENDIDIKAN_KEY] ?: "",
                 preferences[EMAIL_KEY] ?: "",
                 preferences[PHONE_KEY] ?: "",
+                preferences[IS_MENTOR_KEY] ?: false,
+                preferences[BALANCE_KEY] ?: 0,
                 preferences[IS_LOGGED_IN_KEY] ?: false
             )
         }
@@ -57,6 +62,8 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private val PENDIDIKAN_KEY = stringPreferencesKey("jenjangPendidikan")
         private val EMAIL_KEY = stringPreferencesKey("email")
         private val PHONE_KEY = stringPreferencesKey("phoneNumber")
+        private val IS_MENTOR_KEY = booleanPreferencesKey("isMentor")
+        private val BALANCE_KEY = intPreferencesKey("balance")
         private val IS_LOGGED_IN_KEY = booleanPreferencesKey("isLoggedIn")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {

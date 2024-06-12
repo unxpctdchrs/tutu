@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.tuners.tutu.ui.main.home.HomeFragment"
+        android:name="com.tuners.tutu.ui.main_students.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -17,17 +17,17 @@
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.tuners.tutu.ui.main.profile.ProfileFragment"
+        android:name="com.tuners.tutu.ui.main_students.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/navigation_message"
-        android:name="com.tuners.tutu.ui.main.message.MessageFragment"
+        android:name="com.tuners.tutu.ui.main_students.message.MessageFragment"
         android:label="fragment_message"
         tools:layout="@layout/fragment_message" />
     <fragment
         android:id="@+id/consultFragment"
-        android:name="com.tuners.tutu.ui.main.home.consult.ConsultFragment"
+        android:name="com.tuners.tutu.ui.main_students.home.consult.ConsultFragment"
         android:label="fragment_consult"
         tools:layout="@layout/fragment_consult" />
 </navigation>

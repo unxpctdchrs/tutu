@@ -1,48 +1,46 @@
-package com.tuners.tutu.ui.main
+package com.tuners.tutu.ui.main_mentors
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.button.MaterialButton
 import com.tuners.tutu.R
-import com.tuners.tutu.databinding.ActivityMainBinding
+import com.tuners.tutu.databinding.ActivityMainMentorBinding
 import com.tuners.tutu.helper.ViewModelFactory
 import com.tuners.tutu.ui.login.LoginActivity
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class MainMentorActivity : AppCompatActivity() {
 
-    private val mainViewModel by viewModels<MainViewModel> {
-        ViewModelFactory.getInstance(this)
-    }
+    private lateinit var binding: ActivityMainMentorBinding
 
     private lateinit var navView: BottomNavigationView
-    private val navController : NavController by lazy {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+    private val navController: NavController by lazy {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main_mentor) as NavHostFragment
         navHostFragment.navController
+    }
+
+    private val mainViewModel by viewModels<MainMentorViewModel> {
+        ViewModelFactory.getInstance(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+
+        binding = ActivityMainMentorBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         navView = binding.navView
         navView.setupWithNavController(navController)
 
-        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+        onBackPressedDispatcher.addCallback(onBackPressedCallback)
 
         binding.messageFab.setOnClickListener {
             navController.navigate(R.id.navigation_message)
@@ -58,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         mainViewModel.getSession().observe(this) { user ->
             if (!user.isLoggedIn) {
-                startActivity(Intent(this@MainActivity, LoginActivity::class.java))
+                startActivity(Intent(this@MainMentorActivity, LoginActivity::class.java))
                 finish()
             }
         }
@@ -69,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             when (navController.currentDestination?.id) {
                 R.id.navigation_home -> {
                     val customLayout = layoutInflater.inflate(R.layout.exit_dialog, null)
-                    val alertDialogBuilder = AlertDialog.Builder(this@MainActivity)
+                    val alertDialogBuilder = AlertDialog.Builder(this@MainMentorActivity)
                         .setView(customLayout)
 
                     val yesBtn = customLayout.findViewById<MaterialButton>(R.id.btn_logout_yes)

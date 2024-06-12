@@ -60,4 +60,14 @@
     <string name="next">Berikutnya</string>
     <string name="cancel">Batal</string>
     <string name="order_history">Riwayat Pesanan</string>
+    <string name="siswa_sma_smk_man_sederajat">Siswa SMA/SMK/MAN/Sederajat</string>
+    <string name="pilih_target_didik">Pilih Target Didik</string>
+    <string name="masukkan_foto_ktp">Masukkan Foto Ktp</string>
+    <string name="masukkan_portofolio">Masukkan Portofolio</string>
+    <string name="masukkan_cv">Masukkan CV</string>
+    <string name="masukkan_pasfoto_terbaru">Masukkan Pasfoto terbaru</string>
+    <string name="masukkan_bukti_karya_n_contoh_sertifikat_dsb_opsional">Masukkan Bukti Karya\n *contoh: sertifikat, dsb (opsional)</string>
+    <string name="berkas_opsional">Berkas Opsional</string>
+    <string name="berkas_pendukung">Berkas Pendukung</string>
+    <string name="title_activity_main_mentor">MainMentorActivity</string>
 </resources>

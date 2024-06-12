@@ -1,7 +1,6 @@
-package com.tuners.tutu.ui.main.profile
+package com.tuners.tutu.ui.main_students.profile
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope

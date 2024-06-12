@@ -1,14 +1,12 @@
-package com.tuners.tutu.ui.main.home
+package com.tuners.tutu.ui.main_students.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.transition.Fade
@@ -17,7 +15,7 @@ import com.tuners.tutu.adapters.HomeRVAdapter
 import com.tuners.tutu.data.local.HomeRVData
 import com.tuners.tutu.databinding.FragmentHomeBinding
 import com.tuners.tutu.helper.ViewModelFactory
-import com.tuners.tutu.ui.main.MainViewModel
+import com.tuners.tutu.ui.main_students.MainViewModel
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null

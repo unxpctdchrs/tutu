@@ -1,4 +1,4 @@
-package com.tuners.tutu.ui.main
+package com.tuners.tutu.ui.main_students
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main_students.profile.ProfileFragment"
+    tools:context=".ui.main_mentors.profile.MentorProfileFragment"
     android:background="@color/white">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,12 +83,11 @@
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginTop="100dp"
-                    android:layout_marginBottom="80dp"
                     android:orientation="vertical">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
-                        android:layout_height="365dp"
+                        android:layout_height="400dp"
                         android:layout_gravity="center"
                         android:layout_marginHorizontal="20dp">
 
@@ -110,41 +110,39 @@
                                 android:layout_marginBottom="25dp"
                                 android:orientation="vertical">
 
-                                <TextView
-                                    style="@style/titlePoppinsBold"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/ubah_pendidikan"
-                                    android:textColor="@color/white"
-                                    android:textSize="11sp" />
-
-                                <RadioGroup
-                                    android:id="@+id/radio_jenjang"
+                                <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
-
-                                    <com.google.android.material.radiobutton.MaterialRadioButton
-                                        android:id="@+id/siswa_btn"
-                                        style="@style/titlePoppinsBold"
-                                        android:layout_width="120dp"
+                                    android:gravity="center|start">
+                                    
+                                    <ImageButton
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:src="@drawable/ic_add_square"
+                                        android:backgroundTint="@color/dark_yellow"/>
+                                    
+                                    <TextView
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="@string/siswa"
-                                        android:textColor="@color/white"
-                                        android:textSize="10sp"
-                                        tools:ignore="SmallSp" />
+                                        android:text="Tambah Jenjang Pendidikan terakhir"/>
+                                </LinearLayout>
 
-                                    <com.google.android.material.radiobutton.MaterialRadioButton
-                                        android:id="@+id/mahasiswa_btn"
-                                        style="@style/titlePoppinsBold"
-                                        android:layout_width="120dp"
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center|start">
+
+                                    <ImageButton
+                                        android:layout_width="50dp"
+                                        android:layout_height="50dp"
+                                        android:src="@drawable/ic_add_square"
+                                        android:backgroundTint="@color/dark_yellow"/>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginStart="5dp"
-                                        android:text="@string/mahasiswa"
-                                        android:textColor="@color/white"
-                                        android:textSize="10sp"
-                                        tools:ignore="SmallSp" />
-                                </RadioGroup>
+                                        android:text="Tambah Informasi Tambahan"/>
+                                </LinearLayout>
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:id="@+id/edt_name"
@@ -266,4 +264,5 @@
             </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
+
 </ScrollView>

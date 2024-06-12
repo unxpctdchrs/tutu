@@ -13,11 +13,12 @@ import com.tuners.tutu.R
 import com.tuners.tutu.databinding.ActivityStudentRegisterBinding
 import com.tuners.tutu.helper.ViewModelFactory
 import com.tuners.tutu.ui.login.LoginActivity
+import com.tuners.tutu.ui.register.RegisterViewModel
 
 class StudentRegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStudentRegisterBinding
 
-    private val studentRegisterViewModel by viewModels<StudentRegisterViewModel> {
+    private val registerViewModel by viewModels<RegisterViewModel> {
         ViewModelFactory.getInstance(this)
     }
 
@@ -62,18 +63,19 @@ class StudentRegisterActivity : AppCompatActivity() {
             else if (binding.edtEmail.text?.isEmpty()!!) binding.edtEmail.error = getString(R.string.notam)
             else if (binding.edtPhonenumber.text?.isEmpty()!!) binding.edtPhonenumber.error = getString(R.string.notam)
             else {
-                studentRegisterViewModel.register(
+                registerViewModel.register(
                     binding.edtName.text.toString().trim(),
                     binding.edtPassword.text.toString().trim(),
                     binding.edtBirth.text.toString().trim(),
                     binding.edtEmail.text.toString().trim(),
                     binding.edtPhonenumber.text.toString().trim(),
-                    selectedPendidikan
+                    selectedPendidikan,
+                    false
                 )
             }
         }
 
-        studentRegisterViewModel.registerResponse.observe(this) { response ->
+        registerViewModel.registerResponse.observe(this) { response ->
             if (!response.error) {
                 startActivity(Intent(this@StudentRegisterActivity, LoginActivity::class.java))
                 finish()

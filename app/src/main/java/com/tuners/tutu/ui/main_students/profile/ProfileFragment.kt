@@ -1,16 +1,13 @@
-package com.tuners.tutu.ui.main.profile
+package com.tuners.tutu.ui.main_students.profile
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.transition.Fade
 import com.google.android.material.button.MaterialButton
 import com.tuners.tutu.R

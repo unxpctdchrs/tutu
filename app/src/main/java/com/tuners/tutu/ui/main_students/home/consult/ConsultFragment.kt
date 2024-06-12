@@ -1,4 +1,4 @@
-package com.tuners.tutu.ui.main.home.consult
+package com.tuners.tutu.ui.main_students.home.consult
 
 import android.os.Bundle
 import android.view.Gravity
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.transition.Slide
-import com.tuners.tutu.R
 import com.tuners.tutu.databinding.FragmentConsultBinding
 
 class ConsultFragment : Fragment() {

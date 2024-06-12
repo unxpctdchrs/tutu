@@ -44,5 +44,8 @@ data class UserDetailsItem(
 	val email: String,
 
 	@field:SerializedName("username")
-	val username: String
+	val username: String,
+
+	@field:SerializedName("rating")
+	val rating: Float,
 )

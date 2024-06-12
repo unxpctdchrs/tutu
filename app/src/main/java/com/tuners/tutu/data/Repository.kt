@@ -64,9 +64,17 @@ class Repository private constructor(
     private val _registerResponse = MutableLiveData<RegisterResponse>()
     val registerResponse: LiveData<RegisterResponse> = _registerResponse
 
-    fun register(username: String, password: String, birthDatePlace: String, email: String, phoneNumber: String, jenjangPendidikan: String) {
+    fun register(
+        username: String,
+        password: String,
+        birthDatePlace: String,
+        email: String,
+        phoneNumber: String,
+        jenjangPendidikan: String,
+        isMentor: Boolean
+    ) {
         _isLoading.value = true
-        val client = apiService.register(username, password, birthDatePlace, email, phoneNumber, jenjangPendidikan)
+        val client = apiService.register(username, password, birthDatePlace, email, phoneNumber, jenjangPendidikan, isMentor)
         client.enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(
                 call: Call<RegisterResponse>,
@@ -125,7 +133,7 @@ class Repository private constructor(
         birthDatePlace: String,
         email: String,
         phoneNumber: String,
-        jenjangPendidikan: String
+        jenjangPendidikan: String,
     ) {
         _isLoading.value = true
         val client = apiService.updateUser(userId, username, password, birthDatePlace, email, phoneNumber, jenjangPendidikan)

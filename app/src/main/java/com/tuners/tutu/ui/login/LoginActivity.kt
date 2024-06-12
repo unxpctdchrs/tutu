@@ -2,6 +2,7 @@ package com.tuners.tutu.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -9,12 +10,12 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.isVisible
 import com.tuners.tutu.R
 import com.tuners.tutu.data.local.pref.UserModel
 import com.tuners.tutu.databinding.ActivityLoginBinding
 import com.tuners.tutu.helper.ViewModelFactory
-import com.tuners.tutu.ui.main.MainActivity
+import com.tuners.tutu.ui.main_mentors.MainMentorActivity
+import com.tuners.tutu.ui.main_students.MainActivity
 import com.tuners.tutu.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -48,6 +49,8 @@ class LoginActivity : AppCompatActivity() {
                         jenjangPendidikan = user.loginResult.first().jenjangPendidikan,
                         email = user.loginResult.first().email,
                         phoneNumber = user.loginResult.first().phoneNumber,
+                        isMentor = user.loginResult.first().isMentor,
+                        balance = user.loginResult.first().balance,
                         isLoggedIn = true
                     )
                     loginViewModel.saveSession(userToSave)
@@ -56,10 +59,14 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginViewModel.getSession().observe(this) { user ->
-            if (user.isLoggedIn) {
+            if (user.isLoggedIn && !user.isMentor) {
                 startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 finish()
+            } else if (user.isLoggedIn && user.isMentor){
+                startActivity(Intent(this@LoginActivity, MainMentorActivity::class.java))
+                finish()
             }
+            Log.d("isMentor", user.isMentor.toString())
         }
 
         binding.btnLoginGoogle.setOnClickListener {

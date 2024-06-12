@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.home.consult.ConsultFragment"
+    tools:context=".ui.main_students.home.consult.ConsultFragment"
     android:background="@color/white"
     android:orientation="vertical">
 
@@ -63,6 +63,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_mentors"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:listitem="@layout/mentor_layout"
+        android:layout_marginHorizontal="26dp"/>
 
 </LinearLayout>

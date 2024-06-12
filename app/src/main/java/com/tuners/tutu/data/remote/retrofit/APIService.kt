@@ -29,7 +29,8 @@ interface APIService {
         @Field("birthDatePlace") birthDatePlace: String,
         @Field("email") email: String,
         @Field("phoneNumber") phoneNumber: String,
-        @Field("jenjangPendidikan") jenjangPendidikan: String
+        @Field("jenjangPendidikan") jenjangPendidikan: String,
+        @Field("isMentor") isMentor: Boolean
     ): Call<RegisterResponse>
 
     @GET("user/:userId")
@@ -44,6 +45,6 @@ interface APIService {
         @Field("birthDatePlace") birthDatePlace: String,
         @Field("email") email: String,
         @Field("phoneNumber") phoneNumber: String,
-        @Field("jenjangPendidikan") jenjangPendidikan: String
+        @Field("jenjangPendidikan") jenjangPendidikan: String,
     ): Call<UserUpdateResponse>
 }

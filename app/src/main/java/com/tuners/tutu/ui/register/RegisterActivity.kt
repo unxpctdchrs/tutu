@@ -9,6 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.tuners.tutu.R
 import com.tuners.tutu.databinding.ActivityRegisterBinding
 import com.tuners.tutu.ui.login.LoginActivity
+import com.tuners.tutu.ui.register.mentor.MentorRegisterActivity
 import com.tuners.tutu.ui.register.student.StudentRegisterActivity
 
 class RegisterActivity : AppCompatActivity() {
@@ -33,6 +34,10 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.btnPelajar.setOnClickListener {
             startActivity(Intent(this@RegisterActivity, StudentRegisterActivity::class.java))
+        }
+
+        binding.btnPengajar.setOnClickListener {
+            startActivity(Intent(this@RegisterActivity, MentorRegisterActivity::class.java))
         }
     }
 }
