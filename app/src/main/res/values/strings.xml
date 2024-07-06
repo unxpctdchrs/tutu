@@ -30,7 +30,7 @@
     <string name="pilih_jenjang_pendidikan">Pilih Jenjang Pendidikan</string>
     <string name="siswa">Siswa</string>
     <string name="mahasiswa">Mahasiswa</string>
-    <string name="welcome">Hai,\n %s!</string>
+    <string name="welcome">Hai,\n%s!</string>
     <string name="logo">Logo</string>
     <string name="hot">Yang sedang hangat</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -70,4 +70,12 @@
     <string name="berkas_opsional">Berkas Opsional</string>
     <string name="berkas_pendukung">Berkas Pendukung</string>
     <string name="title_activity_main_mentor">MainMentorActivity</string>
+    <string name="balance">%s</string>
+    <string name="title_balance">Saldo</string>
+    <string name="lihat_semua">Lihat Semua</string>
+    <string name="pesanan_masuk">Pesanan Masuk</string>
+    <string name="cash_out">Tarik Saldo</string>
+    <string name="type">Ketik Pesan</string>
+    <string name="placeholder_chat_details">Kita belajar lewat zoom ya, Silahkan join ke zoom</string>
+    <string name="transaction_history">Riwayat Transaksi</string>
 </resources>

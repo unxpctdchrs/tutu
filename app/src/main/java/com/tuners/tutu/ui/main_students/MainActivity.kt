@@ -3,6 +3,7 @@ package com.tuners.tutu.ui.main_students
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -17,6 +18,7 @@ import com.tuners.tutu.databinding.ActivityMainBinding
 import com.tuners.tutu.helper.ViewModelFactory
 import com.tuners.tutu.ui.login.LoginActivity
 import com.tuners.tutu.ui.main_mentors.MainMentorActivity
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -30,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navHostFragment.navController
     }
+
+    private var backPressed: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,24 +74,15 @@ class MainActivity : AppCompatActivity() {
         override fun handleOnBackPressed() {
             when (navController.currentDestination?.id) {
                 R.id.navigation_home -> {
-                    val customLayout = layoutInflater.inflate(R.layout.exit_dialog, null)
-                    val alertDialogBuilder = AlertDialog.Builder(this@MainActivity)
-                        .setView(customLayout)
-
-                    val yesBtn = customLayout.findViewById<MaterialButton>(R.id.btn_logout_yes)
-                    val noBtn = customLayout.findViewById<MaterialButton>(R.id.btn_logout_no)
-
-                    val alertDialog = alertDialogBuilder.create()
-                    alertDialog.show()
-
-                    yesBtn.setOnClickListener {
-                        mainViewModel.logout()
-                        alertDialog.dismiss()
+                    backPressed++
+                    if (backPressed == 1) {
+                        showToast("Tekan tombol kembali sekali lagi untuk keluar")
+                    } else if (backPressed == 2) {
+                        exitProcess(1)
                     }
-
-                    noBtn.setOnClickListener {
-                        alertDialog.dismiss()
-                    }
+                }
+                R.id.chatFragment -> {
+                    navController.popBackStack(R.id.navigation_message, false)
                 }
                 else -> {
                     navController.popBackStack(R.id.navigation_home, false)
@@ -95,5 +90,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
     }
 }

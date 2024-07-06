@@ -3,6 +3,7 @@ package com.tuners.tutu.ui.main_mentors
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
@@ -16,6 +17,7 @@ import com.tuners.tutu.R
 import com.tuners.tutu.databinding.ActivityMainMentorBinding
 import com.tuners.tutu.helper.ViewModelFactory
 import com.tuners.tutu.ui.login.LoginActivity
+import kotlin.system.exitProcess
 
 class MainMentorActivity : AppCompatActivity() {
 
@@ -31,6 +33,8 @@ class MainMentorActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(this)
     }
 
+    private var backPressed: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,7 +44,7 @@ class MainMentorActivity : AppCompatActivity() {
         navView = binding.navView
         navView.setupWithNavController(navController)
 
-        onBackPressedDispatcher.addCallback(onBackPressedCallback)
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
 
         binding.messageFab.setOnClickListener {
             navController.navigate(R.id.navigation_message)
@@ -66,24 +70,15 @@ class MainMentorActivity : AppCompatActivity() {
         override fun handleOnBackPressed() {
             when (navController.currentDestination?.id) {
                 R.id.navigation_home -> {
-                    val customLayout = layoutInflater.inflate(R.layout.exit_dialog, null)
-                    val alertDialogBuilder = AlertDialog.Builder(this@MainMentorActivity)
-                        .setView(customLayout)
-
-                    val yesBtn = customLayout.findViewById<MaterialButton>(R.id.btn_logout_yes)
-                    val noBtn = customLayout.findViewById<MaterialButton>(R.id.btn_logout_no)
-
-                    val alertDialog = alertDialogBuilder.create()
-                    alertDialog.show()
-
-                    yesBtn.setOnClickListener {
-                        mainViewModel.logout()
-                        alertDialog.dismiss()
+                    backPressed++
+                    if (backPressed == 1) {
+                        Toast.makeText(this@MainMentorActivity, "Tekan tombol kembali sekali lagi untuk keluar", Toast.LENGTH_SHORT).show()
+                    } else if (backPressed == 2) {
+                        exitProcess(1)
                     }
-
-                    noBtn.setOnClickListener {
-                        alertDialog.dismiss()
-                    }
+                }
+                R.id.chatFragment2 -> {
+                    navController.popBackStack(R.id.navigation_message, false)
                 }
                 else -> {
                     navController.popBackStack(R.id.navigation_home, false)

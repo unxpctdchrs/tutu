@@ -81,7 +81,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pesanan Masuk"
+                        android:text="@string/pesanan_masuk"
                         style="@style/titlePoppinsSemiBold"
                         android:textSize="16sp"
                         android:ems="5"
@@ -96,7 +96,7 @@
                         android:layout_width="115dp"
                         android:layout_height="40dp"
                         android:layout_marginEnd="20dp"
-                        android:text="Lihat Semua"
+                        android:text="@string/lihat_semua"
                         style="@style/titlePoppinsLight"
                         android:textSize="11sp"
                         android:backgroundTint="@color/white"
@@ -154,7 +154,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Riwayat Pesanan"
+                                android:text="@string/order_history"
                                 style="@style/titlePoppinsSemiBold"
                                 android:textSize="16sp"
                                 android:ems="5"
@@ -170,7 +170,7 @@
                                 android:layout_width="115dp"
                                 android:layout_height="40dp"
                                 android:layout_marginEnd="20dp"
-                                android:text="Lihat Semua"
+                                android:text="@string/lihat_semua"
                                 style="@style/titlePoppinsLight"
                                 android:textSize="11sp"
                                 android:backgroundTint="@color/white"
@@ -189,8 +189,7 @@
                         android:translationZ="5dp"
                         app:cardCornerRadius="30dp"
                         app:cardElevation="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="40dp">
+                        android:layout_marginTop="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -208,7 +207,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Saldo"
+                                    android:text="@string/title_balance"
                                     style="@style/titlePoppinsSemiBold"
                                     android:textSize="16sp"
                                     android:textColor="@color/gray"/>
@@ -217,7 +216,7 @@
                                     android:id="@+id/tv_balance"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="%d"
+                                    android:text="@string/balance"
                                     android:ems="4"
                                     style="@style/titlePoppinsMedium"
                                     android:textSize="32sp"/>
@@ -232,12 +231,69 @@
                                 android:layout_width="115dp"
                                 android:layout_height="40dp"
                                 android:layout_marginEnd="20dp"
-                                android:text="Tarik Saldo"
+                                android:text="@string/cash_out"
                                 style="@style/titlePoppinsLight"
                                 android:textSize="11sp"
                                 android:backgroundTint="@color/dark_blue"
                                 android:textColor="@color/white"
                                 app:cornerRadius="8dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/materialCardView4"
+                        android:layout_width="370dp"
+                        android:layout_height="164dp"
+                        android:backgroundTint="@color/white"
+                        android:translationZ="5dp"
+                        app:cardCornerRadius="30dp"
+                        app:cardElevation="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="40dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="top">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginHorizontal="30dp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/transaction_history"
+                                    style="@style/titlePoppinsSemiBold"
+                                    android:textSize="16sp"
+                                    android:textColor="@color/black"
+                                    android:layout_weight="1"/>
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btn_see_all_transactions"
+                                    android:layout_width="115dp"
+                                    android:layout_height="40dp"
+                                    android:text="@string/lihat_semua"
+                                    style="@style/titlePoppinsLight"
+                                    android:textSize="11sp"
+                                    android:backgroundTint="@color/white"
+                                    android:textColor="@color/dark_blue"
+                                    app:strokeWidth="1dp"
+                                    app:strokeColor="@color/dark_blue"
+                                    app:cornerRadius="8dp"/>
+                            </LinearLayout>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_transactions"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:layout_marginHorizontal="30dp"
+                                tools:listitem="@layout/transaction_in_layout" />
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>

@@ -14,10 +14,19 @@
         android:id="@+id/navigation_message"
         android:name="com.tuners.tutu.ui.main_mentors.message.MentorMessageFragment"
         android:label="fragment_mentor_message"
-        tools:layout="@layout/fragment_mentor_message" />
+        tools:layout="@layout/fragment_mentor_message" >
+        <action
+            android:id="@+id/action_navigation_message_to_chatFragment2"
+            app:destination="@id/chatFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.tuners.tutu.ui.main_mentors.profile.MentorProfileFragment"
         android:label="fragment_mentor_profile"
         tools:layout="@layout/fragment_mentor_profile" />
+    <fragment
+        android:id="@+id/chatFragment2"
+        android:name="com.tuners.tutu.ui.main_students.message.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 </navigation>

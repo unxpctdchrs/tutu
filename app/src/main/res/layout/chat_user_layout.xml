@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="8dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginHorizontal="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:cardCornerRadius="200dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp">
+            <ImageView
+                android:id="@+id/iv_mentor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:src="@tools:sample/avatars"
+                tools:ignore="ContentDescription" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginStart="20dp"
+            android:gravity="center|start">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/placeholder_name"
+                style="@style/titlePoppinsMedium"
+                android:layout_marginTop="-8dp"/>
+
+            <TextView
+                android:id="@+id/tv_chat_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/placeholder_chat_details"
+                style="@style/titlePoppinsRegular"
+                android:textSize="11sp"
+                android:ems="15"
+                android:ellipsize="end"
+                android:textColor="@color/gray"
+                android:maxLines="1"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

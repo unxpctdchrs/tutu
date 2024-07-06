@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:background="@color/white">
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_money_in"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="10dp">
+
+        <TextView
+            android:id="@+id/tv_title_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terima Uang"
+            style="@style/titlePoppinsLight"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        
+        <TextView
+            android:id="@+id/tv_money_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp. 30.000"
+            style="@style/titlePoppinsLight"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24 Mei 2024"
+            style="@style/titlePoppinsLight"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_details"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_details_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dari ShopeePay"
+            style="@style/titlePoppinsLight"
+            android:textSize="12sp"
+            android:textColor="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_money_in"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
