@@ -9,6 +9,8 @@ import com.tuners.tutu.ui.login.LoginViewModel
 import com.tuners.tutu.ui.main_mentors.MainMentorViewModel
 import com.tuners.tutu.ui.main_mentors.profile.MentorProfileViewModel
 import com.tuners.tutu.ui.main_students.MainViewModel
+import com.tuners.tutu.ui.main_students.home.consult.ConsultViewModel
+import com.tuners.tutu.ui.main_students.message.MessageViewModel
 import com.tuners.tutu.ui.main_students.profile.ProfileViewModel
 import com.tuners.tutu.ui.register.RegisterViewModel
 
@@ -33,6 +35,12 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.N
             }
             modelClass.isAssignableFrom(MentorProfileViewModel::class.java) -> {
                 MentorProfileViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ConsultViewModel::class.java) -> {
+                ConsultViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(MessageViewModel::class.java) -> {
+                MessageViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel Class: " + modelClass.name)
         }

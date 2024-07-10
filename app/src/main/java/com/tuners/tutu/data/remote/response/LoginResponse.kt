@@ -16,17 +16,11 @@ data class LoginResponse(
 
 data class LoginResultItem(
 
-	@field:SerializedName("password")
-	val password: String,
-
 	@field:SerializedName("address")
 	val address: String,
 
-	@field:SerializedName("phoneNumber")
-	val phoneNumber: String,
-
-	@field:SerializedName("balance")
-	val balance: Int,
+	@field:SerializedName("role")
+	val role: String,
 
 	@field:SerializedName("gender")
 	val gender: String,
@@ -34,21 +28,33 @@ data class LoginResultItem(
 	@field:SerializedName("birthDatePlace")
 	val birthDatePlace: String,
 
+	@field:SerializedName("rating")
+	val rating: Int,
+
+	@field:SerializedName("uuid")
+	val uuid: String,
+
+	@field:SerializedName("password")
+	val password: String,
+
+	@field:SerializedName("phoneNumber")
+	val phoneNumber: String,
+
+	@field:SerializedName("dateCreated")
+	val dateCreated: String,
+
+	@field:SerializedName("balance")
+	val balance: Int,
+
 	@field:SerializedName("jenjangPendidikan")
 	val jenjangPendidikan: String,
 
 	@field:SerializedName("isMentor")
 	val isMentor: Boolean,
 
-	@field:SerializedName("uuid")
-	val uuid: String,
-
 	@field:SerializedName("email")
 	val email: String,
 
 	@field:SerializedName("username")
-	val username: String,
-
-	@field:SerializedName("rating")
-	val rating: Float,
+	val username: String
 )

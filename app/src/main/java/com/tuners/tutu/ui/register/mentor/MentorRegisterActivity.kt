@@ -59,7 +59,7 @@ class MentorRegisterActivity : AppCompatActivity() {
                 birthDatePlace = binding.edtBirth.text.toString().trim(),
                 email = binding.edtEmail.text.toString().trim(),
                 phoneNumber = binding.edtPhonenumber.text.toString().trim(),
-                isMentor = true,
+                role = "mentor",
                 balance = 0,
                 jenjangPendidikan = targetDidik
             )

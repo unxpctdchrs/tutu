@@ -70,7 +70,7 @@ class StudentRegisterActivity : AppCompatActivity() {
                     binding.edtEmail.text.toString().trim(),
                     binding.edtPhonenumber.text.toString().trim(),
                     selectedPendidikan,
-                    false
+                    "student"
                 )
             }
         }

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.transition.Slide
 import com.tuners.tutu.databinding.FragmentOrderBinding
 
@@ -27,9 +28,27 @@ class OrderFragment : Fragment() {
         return binding?.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val data = OrderFragmentArgs.fromBundle(arguments as Bundle)
+
+        binding?.tvName?.text = data.username
+        binding?.tvRating?.text = data.ratings.toString()
+
+        binding?.btnCancel?.setOnClickListener {
+            val toPrev = OrderFragmentDirections.actionOrderFragmentToConsultFragment()
+            findNavController().navigate(toPrev)
+        }
+
+        binding?.btnNext?.setOnClickListener {
+            val toOrder2 = OrderFragmentDirections.actionOrderFragmentToOrderFragment2()
+            findNavController().navigate(toOrder2)
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

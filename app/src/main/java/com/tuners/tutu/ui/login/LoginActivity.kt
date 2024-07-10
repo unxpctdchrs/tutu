@@ -49,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
                         jenjangPendidikan = user.loginResult.first().jenjangPendidikan,
                         email = user.loginResult.first().email,
                         phoneNumber = user.loginResult.first().phoneNumber,
-                        isMentor = user.loginResult.first().isMentor,
+                        role = user.loginResult.first().role,
                         balance = user.loginResult.first().balance,
                         isLoggedIn = true
                     )
@@ -59,14 +59,14 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginViewModel.getSession().observe(this) { user ->
-            if (user.isLoggedIn && !user.isMentor) {
+            if (user.isLoggedIn && user.role == "student") {
                 startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 finish()
-            } else if (user.isLoggedIn && user.isMentor){
+            } else if (user.isLoggedIn && user.role == "mentor"){
                 startActivity(Intent(this@LoginActivity, MainMentorActivity::class.java))
                 finish()
             }
-            Log.d("isMentor", user.isMentor.toString())
+            Log.d("isMentor", user.role)
         }
 
         binding.btnLoginGoogle.setOnClickListener {

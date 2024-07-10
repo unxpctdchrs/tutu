@@ -12,7 +12,7 @@ data class UserModel(
     val jenjangPendidikan: String,
     val email: String,
     val phoneNumber: String,
-    val isMentor: Boolean,
+    val role: String,
     val balance: Int,
     val isLoggedIn: Boolean = false
 ): Parcelable

@@ -22,7 +22,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[PENDIDIKAN_KEY] = user.jenjangPendidikan
             preferences[EMAIL_KEY] = user.email
             preferences[PHONE_KEY] = user.phoneNumber
-            preferences[IS_MENTOR_KEY] = user.isMentor
+            preferences[ROLE_KEY] = user.role
             preferences[BALANCE_KEY] = user.balance
             preferences[IS_LOGGED_IN_KEY] = user.isLoggedIn
         }
@@ -38,7 +38,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
                 preferences[PENDIDIKAN_KEY] ?: "",
                 preferences[EMAIL_KEY] ?: "",
                 preferences[PHONE_KEY] ?: "",
-                preferences[IS_MENTOR_KEY] ?: false,
+                preferences[ROLE_KEY] ?: "",
                 preferences[BALANCE_KEY] ?: 0,
                 preferences[IS_LOGGED_IN_KEY] ?: false
             )
@@ -62,7 +62,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private val PENDIDIKAN_KEY = stringPreferencesKey("jenjangPendidikan")
         private val EMAIL_KEY = stringPreferencesKey("email")
         private val PHONE_KEY = stringPreferencesKey("phoneNumber")
-        private val IS_MENTOR_KEY = booleanPreferencesKey("isMentor")
+        private val ROLE_KEY = stringPreferencesKey("role")
         private val BALANCE_KEY = intPreferencesKey("balance")
         private val IS_LOGGED_IN_KEY = booleanPreferencesKey("isLoggedIn")
 

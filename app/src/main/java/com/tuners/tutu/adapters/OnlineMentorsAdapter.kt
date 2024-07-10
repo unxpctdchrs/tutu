@@ -7,19 +7,20 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.tuners.tutu.data.remote.response.UserDetailsItem
+import com.tuners.tutu.data.remote.response.MentorsItem
 import com.tuners.tutu.databinding.MentorLayoutBinding
 import com.tuners.tutu.ui.main_students.home.consult.ConsultFragmentDirections
-import com.tuners.tutu.ui.main_students.message.MessageFragmentDirections
 
-class OnlineMentorsAdapter(private val isLoading: Boolean) : ListAdapter<UserDetailsItem, OnlineMentorsAdapter.ViewHolder>(DIFF_CALLBACK) {
+class OnlineMentorsAdapter(private val isLoading: Boolean) : ListAdapter<MentorsItem, OnlineMentorsAdapter.ViewHolder>(DIFF_CALLBACK) {
     inner class ViewHolder(private val binding: MentorLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(mentor: UserDetailsItem) {
+        fun bind(mentor: MentorsItem) {
             binding.tvName.text = mentor.username
-//            binding.tvRating.text = mentor.rating.toString()
+            binding.tvRating.text = mentor.rating.toString()
             binding.root.setOnClickListener {
-                val toChat =  MessageFragmentDirections.actionNavigationMessageToChatFragment()
-                it.findNavController().navigate(toChat)
+                val toOrder = ConsultFragmentDirections.actionConsultFragmentToOrderFragment()
+                toOrder.username = mentor.username
+                toOrder.ratings = mentor.rating
+                it.findNavController().navigate(toOrder)
             }
         }
     }
@@ -30,23 +31,23 @@ class OnlineMentorsAdapter(private val isLoading: Boolean) : ListAdapter<UserDet
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val product = getItem(position)
-        holder.bind(product)
+        val mentors = getItem(position)
+        holder.bind(mentors)
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<UserDetailsItem>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<MentorsItem>() {
             override fun areItemsTheSame(
-                oldItem: UserDetailsItem,
-                newItem: UserDetailsItem
+                oldItem: MentorsItem,
+                newItem: MentorsItem
             ): Boolean {
                 return oldItem == newItem
             }
 
             @SuppressLint("DiffUtilEquals")
             override fun areContentsTheSame(
-                oldItem: UserDetailsItem,
-                newItem: UserDetailsItem
+                oldItem: MentorsItem,
+                newItem: MentorsItem
             ): Boolean {
                 return oldItem == newItem
             }

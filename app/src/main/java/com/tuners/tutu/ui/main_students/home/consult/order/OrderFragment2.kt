@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.tuners.tutu.R
 import com.tuners.tutu.databinding.FragmentOrder2Binding
 
@@ -23,6 +24,10 @@ class OrderFragment2 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding?.btnCancel?.setOnClickListener {
+            val toPrev = OrderFragment2Directions.actionOrderFragment2ToOrderFragment()
+            findNavController().navigate(toPrev)
+        }
     }
 
     override fun onDestroyView() {

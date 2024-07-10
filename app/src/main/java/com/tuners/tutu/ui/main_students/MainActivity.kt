@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.button.MaterialButton
 import com.tuners.tutu.R
@@ -57,13 +58,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        navView.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.navigation_home -> {
+                    navController.navigate(R.id.navigation_home)
+                    true
+                }
+                else -> {
+                    menuItem.onNavDestinationSelected(navController)
+                }
+            }
+        }
 
         // TODO: mungkin start activitynya dijadikan di login aja
         mainViewModel.getSession().observe(this) { user ->
             if (!user.isLoggedIn) {
                 startActivity(Intent(this@MainActivity, LoginActivity::class.java))
                 finish()
-            } else if (user.isMentor) {
+            } else if (user.role == "mentor") {
                 startActivity(Intent(this@MainActivity, MainMentorActivity::class.java))
                 finish()
             }
@@ -83,6 +95,15 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.chatFragment -> {
                     navController.popBackStack(R.id.navigation_message, false)
+                }
+                R.id.orderHistoryFragment -> {
+                    navController.popBackStack(R.id.consultFragment, false)
+                }
+                R.id.orderFragment -> {
+                    navController.popBackStack(R.id.consultFragment, false)
+                }
+                R.id.orderFragment2 -> {
+                    navController.popBackStack(R.id.orderFragment, false)
                 }
                 else -> {
                     navController.popBackStack(R.id.navigation_home, false)

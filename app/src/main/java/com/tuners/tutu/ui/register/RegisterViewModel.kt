@@ -16,6 +16,6 @@ class RegisterViewModel(private val repository: Repository) : ViewModel() {
         email: String,
         phoneNumber: String,
         jenjangPendidikan: String,
-        isMentor: Boolean
-    ) = repository.register(username, password, birthDatePlace, email, phoneNumber, jenjangPendidikan, isMentor)
+        role: String
+    ) = repository.register(username, password, birthDatePlace, email, phoneNumber, jenjangPendidikan, role)
 }

@@ -35,17 +35,26 @@
         android:label="fragment_consult"
         tools:layout="@layout/fragment_consult" >
         <action
-            android:id="@+id/action_consultFragment_to_orderFragment"
-            app:destination="@id/orderFragment" />
-        <action
             android:id="@+id/action_consultFragment_to_orderHistoryFragment"
             app:destination="@id/orderHistoryFragment" />
+        <action
+            android:id="@+id/action_consultFragment_to_orderFragment"
+            app:destination="@id/orderFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.tuners.tutu.ui.main_students.message.chat.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="username"
+            app:argType="string"
+            android:defaultValue="username" />
+        <argument
+            android:name="roomId"
+            app:argType="string"
+            android:defaultValue="roomId" />
+    </fragment>
     <fragment
         android:id="@+id/orderFragment"
         android:name="com.tuners.tutu.ui.main_students.home.consult.order.OrderFragment"
@@ -54,12 +63,27 @@
         <action
             android:id="@+id/action_orderFragment_to_orderFragment2"
             app:destination="@id/orderFragment2" />
+        <argument
+            android:name="username"
+            app:argType="string"
+            android:defaultValue="username" />
+        <argument
+            android:name="ratings"
+            app:argType="float"
+            android:defaultValue="0.0" />
+        <action
+            android:id="@+id/action_orderFragment_to_consultFragment"
+            app:destination="@id/consultFragment" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment2"
         android:name="com.tuners.tutu.ui.main_students.home.consult.order.OrderFragment2"
         android:label="fragment_order2"
-        tools:layout="@layout/fragment_order2" />
+        tools:layout="@layout/fragment_order2" >
+        <action
+            android:id="@+id/action_orderFragment2_to_orderFragment"
+            app:destination="@id/orderFragment" />
+    </fragment>
     <fragment
         android:id="@+id/orderHistoryFragment"
         android:name="com.tuners.tutu.ui.main_students.home.consult.orderhistory.OrderHistoryFragment"

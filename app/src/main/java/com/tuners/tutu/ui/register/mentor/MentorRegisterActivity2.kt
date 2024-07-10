@@ -53,7 +53,7 @@ class MentorRegisterActivity2 : AppCompatActivity() {
                     email = data.email,
                     phoneNumber = data.phoneNumber,
                     jenjangPendidikan = data.jenjangPendidikan,
-                    isMentor = true
+                    role = data.role
                 )
             }
         }

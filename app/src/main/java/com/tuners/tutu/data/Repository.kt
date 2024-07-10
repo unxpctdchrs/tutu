@@ -5,11 +5,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tuners.tutu.data.local.pref.UserModel
 import com.tuners.tutu.data.local.pref.UserPreference
+import com.tuners.tutu.data.remote.response.ChatsResponse
 import com.tuners.tutu.data.remote.response.LoginResponse
+import com.tuners.tutu.data.remote.response.MentorListResponse
+import com.tuners.tutu.data.remote.response.MessageResponse
 import com.tuners.tutu.data.remote.response.RegisterResponse
 import com.tuners.tutu.data.remote.response.UserDetailsResponse
 import com.tuners.tutu.data.remote.response.UserUpdateResponse
 import com.tuners.tutu.data.remote.retrofit.APIService
+import com.tuners.tutu.helper.SingleLiveEvent
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,7 +41,7 @@ class Repository private constructor(
     val isLoading: LiveData<Boolean> = _isLoading
 
     // Login
-    private val _loginResponse = MutableLiveData<LoginResponse>()
+    private val _loginResponse = SingleLiveEvent<LoginResponse>()
     val loginResponse: LiveData<LoginResponse> = _loginResponse
 
     fun login(username: String, password: String) {
@@ -61,7 +65,7 @@ class Repository private constructor(
     }
 
     // Register
-    private val _registerResponse = MutableLiveData<RegisterResponse>()
+    private val _registerResponse = SingleLiveEvent<RegisterResponse>()
     val registerResponse: LiveData<RegisterResponse> = _registerResponse
 
     fun register(
@@ -71,10 +75,10 @@ class Repository private constructor(
         email: String,
         phoneNumber: String,
         jenjangPendidikan: String,
-        isMentor: Boolean
+        role: String
     ) {
         _isLoading.value = true
-        val client = apiService.register(username, password, birthDatePlace, email, phoneNumber, jenjangPendidikan, isMentor)
+        val client = apiService.register(username, password, birthDatePlace, email, phoneNumber, jenjangPendidikan, role)
         client.enqueue(object : Callback<RegisterResponse> {
             override fun onResponse(
                 call: Call<RegisterResponse>,
@@ -171,5 +175,84 @@ class Repository private constructor(
                 instance ?: Repository(userPreference, apiService)
             }.also { instance = it }
         }
+    }
+
+    // get mentors
+    private val _mentors = MutableLiveData<MentorListResponse>()
+    val mentors: LiveData<MentorListResponse> get() = _mentors
+    private val _mentorsLoading = MutableLiveData<Boolean>()
+    val mentorsLoading: LiveData<Boolean> get() = _mentorsLoading
+
+    fun getMentors() {
+        _mentorsLoading.value = true
+        val client = apiService.getMentors()
+        client.enqueue(object : Callback<MentorListResponse> {
+            override fun onResponse(
+                call: Call<MentorListResponse>,
+                response: Response<MentorListResponse>
+            ) {
+                _mentorsLoading.value = false
+                if (response.isSuccessful) {
+                    _mentors.value = response.body()
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<MentorListResponse>, t: Throwable) {
+                _mentorsLoading.value = false
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+
+    // get chats
+    private val _chats = MutableLiveData<ChatsResponse>()
+    val chats: LiveData<ChatsResponse> get() = _chats
+    private val _chatLoading = MutableLiveData<Boolean>()
+    val chatLoading: LiveData<Boolean> get() = _chatLoading
+
+    fun getChats(userId: String) {
+        _chatLoading.value = true
+        val client = apiService.getChats(userId)
+        client.enqueue(object : Callback<ChatsResponse> {
+            override fun onResponse(call: Call<ChatsResponse>, response: Response<ChatsResponse>) {
+                _chatLoading.value = false
+                if (response.isSuccessful) {
+                    _chats.value = response.body()
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ChatsResponse>, t: Throwable) {
+                _chatLoading.value = false
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+
+    // post message
+    private val _msgResp = MutableLiveData<MessageResponse>()
+    val msgResp: LiveData<MessageResponse> get() = _msgResp
+
+    fun postMessage(roomId: String, message: String) {
+        val client = apiService.postMessage(roomId, message)
+        client.enqueue(object : Callback<MessageResponse> {
+            override fun onResponse(
+                call: Call<MessageResponse>,
+                response: Response<MessageResponse>
+            ) {
+                if (response.isSuccessful) {
+                    _msgResp.value = response.body()
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
     }
 }

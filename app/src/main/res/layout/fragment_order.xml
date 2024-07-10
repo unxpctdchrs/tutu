@@ -168,8 +168,8 @@
         android:layout_marginTop="50dp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_logout_no"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_cancel"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/cancel"
             android:layout_weight="1"
@@ -184,8 +184,8 @@
             app:strokeWidth="1dp"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_logout_yes"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_next"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/next"
             android:layout_weight="1"
