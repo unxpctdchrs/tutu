@@ -4,18 +4,24 @@ import com.google.gson.annotations.SerializedName
 
 data class MentorListResponse(
 
-	@field:SerializedName("mentors")
-	val mentors: List<MentorsItem>,
+	@field:SerializedName("result")
+	val result: List<ResultItem?>? = null,
 
 	@field:SerializedName("error")
-	val error: Boolean
+	val error: Boolean? = null,
+
+	@field:SerializedName("message")
+	val message: String? = null
 )
 
-data class MentorsItem(
+data class ResultItem(
 
 	@field:SerializedName("rating")
-	val rating: Float,
+	val rating: Float? = null,
+
+	@field:SerializedName("mentorId")
+	val mentorId: String? = null,
 
 	@field:SerializedName("username")
-	val username: String
+	val username: String? = null
 )

@@ -4,9 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="5dp"
-    android:gravity="end">
+    android:gravity="end"
+    android:paddingVertical="1dp"
+    android:paddingHorizontal="5dp">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
@@ -18,7 +20,7 @@
             android:id="@+id/tv_message"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/placeholder_chat_details"
+            tools:text="@string/placeholder_chat_details"
             android:background="@color/dark_blue"
             android:padding="10dp"
             style="@style/titlePoppinsRegular"

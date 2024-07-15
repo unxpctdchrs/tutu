@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.transition.Fade
 import com.tuners.tutu.R
 import com.tuners.tutu.databinding.FragmentOrderDetailsBinding
 
@@ -14,7 +15,8 @@ class OrderDetailsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        enterTransition = Fade()
+        exitTransition = Fade()
     }
 
     override fun onCreateView(

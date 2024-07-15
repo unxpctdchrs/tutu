@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/dark_yellow"
-            android:text="Pesanan anda sedang diproses"
+            android:text="@string/success"
             style="@style/titlePoppinsMedium"
             android:textSize="12sp"
             android:textColor="@color/white"
@@ -30,21 +30,36 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_logout_no"
+            <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Kembali"
                 android:layout_weight="1"
                 android:layout_marginHorizontal="30dp"
-                android:layout_marginVertical="20dp"
-                android:backgroundTint="@color/white"
-                style="@style/titlePoppinsMedium"
-                android:textSize="15sp"
-                app:cornerRadius="7dp"
-                android:textColor="@color/dark_blue"
-                app:strokeColor="@color/dark_blue"
-                app:strokeWidth="1dp"/>
+                android:layout_marginVertical="20dp">
+
+                <ProgressBar
+                    android:id="@+id/loader"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:translationZ="5dp"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="@color/dark_blue"
+                    android:visibility="gone"
+                    tools:visibility="visible"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_start_chat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/start_a_chat_with_mentor"
+                    android:backgroundTint="@color/white"
+                    style="@style/titlePoppinsMedium"
+                    android:textSize="12sp"
+                    app:cornerRadius="7dp"
+                    android:textColor="@color/dark_blue"
+                    app:strokeColor="@color/dark_blue"
+                    app:strokeWidth="1dp"/>
+            </FrameLayout>
         </LinearLayout>
     </LinearLayout>
 

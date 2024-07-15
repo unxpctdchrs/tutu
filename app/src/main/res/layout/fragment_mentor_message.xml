@@ -1,23 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main_mentors.message.MentorMessageFragment">
+    tools:context=".ui.main_mentors.message.MentorMessageFragment"
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_dashboard"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/white"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="30dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            app:icon="@drawable/ic_back"
+            app:iconSize="42dp"
+            android:layout_marginStart="-30dp"
+            android:backgroundTint="@android:color/transparent"
+            android:outlineSpotShadowColor="@android:color/transparent"
+            android:outlineAmbientShadowColor="@android:color/transparent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_message"
+            style="@style/titlePoppinsMedium"
+            android:textSize="32sp"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|top"
+        android:layout_marginHorizontal="28dp"
+        android:layout_marginTop="20dp"
+        android:queryHint="@string/search_message"
+        android:queryBackground="@android:color/transparent"
+        android:iconifiedByDefault="false"
+        android:background="@drawable/search_view_background_transparent"
+        android:theme="@style/ThemeOverlay.SearchView"
+        android:searchIcon="@drawable/ic_search"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="28dp">
+
+        <ProgressBar
+            android:id="@+id/loader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/dark_blue"
+            android:translationZ="5dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_users"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/mentor_layout"/>
+    </FrameLayout>
+</LinearLayout>

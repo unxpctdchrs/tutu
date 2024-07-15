@@ -16,6 +16,9 @@ data class ChatsResponse(
 
 data class ChatsItem(
 
+	@field:SerializedName("studentUsername")
+	val studentUsername: String,
+
 	@field:SerializedName("lastMsg")
 	val lastMsg: String,
 

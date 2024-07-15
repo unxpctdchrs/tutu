@@ -34,6 +34,7 @@ class MainMentorActivity : AppCompatActivity() {
     }
 
     private var backPressed: Int = 0
+    private var lastPressTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,9 @@ class MainMentorActivity : AppCompatActivity() {
                 R.id.navigation_message -> {
                     binding.coordinator.visibility = View.GONE
                 }
+                R.id.navigation_home -> {
+                    binding.coordinator.visibility = View.VISIBLE
+                }
             }
         }
 
@@ -70,7 +74,15 @@ class MainMentorActivity : AppCompatActivity() {
         override fun handleOnBackPressed() {
             when (navController.currentDestination?.id) {
                 R.id.navigation_home -> {
+                    val currentTime = System.currentTimeMillis()
+
+                    if (currentTime - lastPressTime > 1000) {
+                        backPressed = 0
+                    }
+
                     backPressed++
+                    lastPressTime = currentTime
+
                     if (backPressed == 1) {
                         Toast.makeText(this@MainMentorActivity, "Tekan tombol kembali sekali lagi untuk keluar", Toast.LENGTH_SHORT).show()
                     } else if (backPressed == 2) {

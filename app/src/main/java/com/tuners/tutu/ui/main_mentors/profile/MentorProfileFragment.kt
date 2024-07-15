@@ -35,7 +35,13 @@ class MentorProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        mentorProfileViewModel.getSession().observe(viewLifecycleOwner) { user ->
+            binding?.edtName?.setHint(user.name)
+            binding?.edtBirth?.setHint(user.birthDatePlace)
+            binding?.edtEmail?.setHint(user.email)
+            binding?.edtPassword?.setHint(user.password)
+            binding?.edtPhonenumber?.setHint(user.phoneNumber)
+        }
 
         binding?.btnLogout?.setOnClickListener {
             val customLayout = layoutInflater.inflate(R.layout.exit_dialog, null)

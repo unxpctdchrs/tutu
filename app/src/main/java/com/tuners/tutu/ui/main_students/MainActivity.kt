@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private var backPressed: Int = 0
+    private var lastPressTime = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,8 +53,11 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.navigation_message -> {
+                R.id.navigation_message, R.id.chatFragment -> {
                     binding.coordinator.visibility = View.GONE
+                }
+                R.id.navigation_home -> {
+                    binding.coordinator.visibility = View.VISIBLE
                 }
             }
         }
@@ -86,7 +90,15 @@ class MainActivity : AppCompatActivity() {
         override fun handleOnBackPressed() {
             when (navController.currentDestination?.id) {
                 R.id.navigation_home -> {
+                    val currentTime = System.currentTimeMillis()
+
+                    if (currentTime - lastPressTime > 1000) {
+                        backPressed = 0
+                    }
+
                     backPressed++
+                    lastPressTime = currentTime
+
                     if (backPressed == 1) {
                         showToast("Tekan tombol kembali sekali lagi untuk keluar")
                     } else if (backPressed == 2) {
@@ -113,7 +125,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(this@MainActivity, message, Toast.LENGTH_SHORT).show()
+    private fun showToast(msg: String) {
+        Toast.makeText(this@MainActivity, msg, Toast.LENGTH_SHORT).show()
     }
 }

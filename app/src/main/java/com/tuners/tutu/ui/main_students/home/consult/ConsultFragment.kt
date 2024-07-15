@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,16 +48,42 @@ class ConsultFragment : Fragment() {
             findNavController().navigate(toOrderHistory)
         }
 
-        consultViewModel.mentors.observe(viewLifecycleOwner) { data ->
-            loadMentors(data)
+        binding?.svUser?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                consultViewModel.searchMentors(newText.toString())
+                return true
+            }
+
+        })
+
+        consultViewModel.mentorsLoading.observe(viewLifecycleOwner) { isLoading ->
+            isLoading(isLoading)
+
+            if (!isLoading) {
+                consultViewModel.mentors.observe(viewLifecycleOwner) { data ->
+                    loadMentors(data)
+                }
+            }
+        }
+
+        binding?.btnBack?.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 
     private fun loadMentors(mentors: MentorListResponse) {
         val adapter = OnlineMentorsAdapter(false)
-        adapter.submitList(mentors.mentors)
+        adapter.submitList(mentors.result)
         binding?.rvMentors?.adapter = adapter
         binding?.rvMentors?.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun isLoading(b: Boolean) {
+        if (b) binding?.loader?.visibility = View.VISIBLE else binding?.loader?.visibility = View.GONE
     }
 
     override fun onDestroyView() {

@@ -6,9 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import com.tuners.tutu.data.local.pref.UserModel
 import com.tuners.tutu.data.local.pref.UserPreference
 import com.tuners.tutu.data.remote.response.ChatsResponse
+import com.tuners.tutu.data.remote.response.CreateChatResponse
 import com.tuners.tutu.data.remote.response.LoginResponse
 import com.tuners.tutu.data.remote.response.MentorListResponse
 import com.tuners.tutu.data.remote.response.MessageResponse
+import com.tuners.tutu.data.remote.response.PlaceOrderResponse
 import com.tuners.tutu.data.remote.response.RegisterResponse
 import com.tuners.tutu.data.remote.response.UserDetailsResponse
 import com.tuners.tutu.data.remote.response.UserUpdateResponse
@@ -206,6 +208,30 @@ class Repository private constructor(
         })
     }
 
+    // search mentors
+    fun searchMentors(username: String) {
+        _mentorsLoading.value = true
+        val client = apiService.searchMentors(username)
+        client.enqueue(object : Callback<MentorListResponse> {
+            override fun onResponse(
+                call: Call<MentorListResponse>,
+                response: Response<MentorListResponse>
+            ) {
+                _mentorsLoading.value = false
+                if (response.isSuccessful) {
+                    _mentors.value = response.body()
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<MentorListResponse>, t: Throwable) {
+                _mentorsLoading.value = false
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+
     // get chats
     private val _chats = MutableLiveData<ChatsResponse>()
     val chats: LiveData<ChatsResponse> get() = _chats
@@ -232,12 +258,60 @@ class Repository private constructor(
         })
     }
 
+    fun getChatsMentor(mentorId: String) {
+        _chatLoading.value = true
+        val client = apiService.getChatsMentor(mentorId)
+        client.enqueue(object : Callback<ChatsResponse> {
+            override fun onResponse(call: Call<ChatsResponse>, response: Response<ChatsResponse>) {
+                _chatLoading.value = false
+                if (response.isSuccessful) {
+                    _chats.value = response.body()
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ChatsResponse>, t: Throwable) {
+                _chatLoading.value = false
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+
+    // create chatroom
+    private val _createChatResponse = SingleLiveEvent<CreateChatResponse>()
+    val createChatResponse: LiveData<CreateChatResponse> get() = _createChatResponse
+    private val _createChatLoading = SingleLiveEvent<Boolean>()
+    val createChatLoading: LiveData<Boolean> get() = _createChatLoading
+
+    fun createChat(mentorUsername: String, mentorId: String, studentUsername: String, userId: String) {
+        _createChatLoading.value = true
+        val client = apiService.createChat(mentorUsername, mentorId, studentUsername, userId)
+        client.enqueue(object : Callback<CreateChatResponse> {
+            override fun onResponse(
+                call: Call<CreateChatResponse>,
+                response: Response<CreateChatResponse>
+            ) {
+                _createChatLoading.value = false
+                if (response.isSuccessful) {
+                    _createChatResponse.value = response.body()
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<CreateChatResponse>, t: Throwable) {
+                _createChatLoading.value = false
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+
     // post message
     private val _msgResp = MutableLiveData<MessageResponse>()
-    val msgResp: LiveData<MessageResponse> get() = _msgResp
 
-    fun postMessage(roomId: String, message: String) {
-        val client = apiService.postMessage(roomId, message)
+    fun postMessage(roomId: String, message: String, senderId: String) {
+        val client = apiService.postMessage(roomId, message, senderId)
         client.enqueue(object : Callback<MessageResponse> {
             override fun onResponse(
                 call: Call<MessageResponse>,
@@ -251,6 +325,34 @@ class Repository private constructor(
             }
 
             override fun onFailure(call: Call<MessageResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+
+    // PlaceOrder
+    private val _order = MutableLiveData<PlaceOrderResponse>()
+    private val _orderLoading = MutableLiveData<Boolean>()
+    val orderLoading: LiveData<Boolean> get() = _orderLoading
+
+    fun placeOrder(mentorUsername: String, userId: String, consultationType: String, consultationDuration: String, total: Int) {
+        _orderLoading.value = true
+        val client = apiService.placeOrder(mentorUsername, userId, consultationType, consultationDuration, total)
+        client.enqueue(object : Callback<PlaceOrderResponse> {
+            override fun onResponse(
+                call: Call<PlaceOrderResponse>,
+                response: Response<PlaceOrderResponse>
+            ) {
+                _orderLoading.value = false
+                if (response.isSuccessful) {
+                    _order.value = response.body()
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<PlaceOrderResponse>, t: Throwable) {
+                _orderLoading.value = false
                 Log.e(TAG, "onFailure: ${t.message.toString()}")
             }
         })

@@ -6,14 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tuners.tutu.R
 import com.tuners.tutu.adapters.MessageAdapter
 import com.tuners.tutu.data.remote.response.Messages
 import com.tuners.tutu.databinding.FragmentChatBinding
 import com.tuners.tutu.helper.ViewModelFactory
+import com.tuners.tutu.ui.main_students.MainViewModel
 import com.tuners.tutu.ui.main_students.message.MessageViewModel
 import io.github.jan.supabase.annotations.SupabaseExperimental
 import io.github.jan.supabase.createSupabaseClient
@@ -32,6 +35,10 @@ class ChatFragment : Fragment() {
     private val binding get() = _binding
 
     private val messageViewModel by viewModels<MessageViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
+
+    private val mainViewModel by activityViewModels<MainViewModel> {
         ViewModelFactory.getInstance(requireContext())
     }
 
@@ -61,7 +68,11 @@ class ChatFragment : Fragment() {
         binding?.rvChat?.layoutManager = LinearLayoutManager(requireContext())
 
         binding?.btnSend?.setOnClickListener {
-            messageViewModel.postMessage(data.roomId, binding?.edtChat?.text.toString().trim())
+            val message = binding?.edtChat?.text.toString().trim()
+
+            mainViewModel.getSession().observe(viewLifecycleOwner) { currentUser ->
+                messageViewModel.postMessage(data.roomId, message, currentUser.userId)
+            }
             binding?.edtChat?.setText("")
         }
 
@@ -78,12 +89,20 @@ class ChatFragment : Fragment() {
                 populateChats(it)
             }
         }
+
+        binding?.btnBack?.setOnClickListener {
+            val toPrev = ChatFragmentDirections.actionChatFragmentToNavigationMessage()
+            findNavController().navigate(toPrev)
+        }
     }
 
     private fun populateChats(msg: List<Messages>) {
-        val adapter = MessageAdapter()
-        adapter.submitList(msg)
-        binding?.rvChat?.adapter = adapter
+        mainViewModel.getSession().observe(viewLifecycleOwner) { currentUser ->
+            val adapter = MessageAdapter(currentUser.userId)
+            adapter.submitList(msg)
+            binding?.rvChat?.adapter = adapter
+            binding?.rvChat?.scrollToPosition(msg.size - 1)
+        }
     }
 
     override fun onDestroyView() {

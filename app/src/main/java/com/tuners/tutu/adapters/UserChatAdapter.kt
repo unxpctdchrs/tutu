@@ -9,19 +9,33 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.tuners.tutu.data.remote.response.ChatsItem
 import com.tuners.tutu.databinding.ChatUserLayoutBinding
+import com.tuners.tutu.ui.main_mentors.message.MentorMessageFragmentDirections
 import com.tuners.tutu.ui.main_students.message.MessageFragmentDirections
 
-class UserChatAdapter() : ListAdapter<ChatsItem, UserChatAdapter.ViewHolder>(DIFF_CALLBACK) {
+class UserChatAdapter(private val isMentor: Boolean) : ListAdapter<ChatsItem, UserChatAdapter.ViewHolder>(DIFF_CALLBACK) {
     inner class ViewHolder(private val binding: ChatUserLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(chat: ChatsItem) {
-            binding.tvName.text = chat.mentorUsername
-            binding.tvChatDetails.text = chat.lastMsg
-            binding.root.setOnClickListener {
-                val toMessages = MessageFragmentDirections.actionNavigationMessageToChatFragment()
-                toMessages.username = chat.mentorUsername
-                toMessages.roomId = chat.chatroomId
-                it.findNavController().navigate(toMessages)
+            if (isMentor) {
+                binding.tvName.text = chat.studentUsername
+                binding.root.setOnClickListener {
+                    val toMessages = MentorMessageFragmentDirections.actionNavigationMessageToChatFragment2()
+                    toMessages.username = chat.studentUsername
+                    toMessages.roomId = chat.chatroomId
+                    it.findNavController().navigate(toMessages)
+                }
+            } else {
+                binding.tvName.text = chat.mentorUsername
+                binding.root.setOnClickListener {
+                    val toMessages = MessageFragmentDirections.actionNavigationMessageToChatFragment()
+                    toMessages.username = chat.mentorUsername
+                    toMessages.roomId = chat.chatroomId
+                    it.findNavController().navigate(toMessages)
+                }
             }
+
+
+
+            binding.tvChatDetails.text = chat.lastMsg
         }
     }
 

@@ -71,7 +71,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showToast() {
-        Toast.makeText(requireContext(), "On Progress..", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Sedang dalam pengerjaan..", Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {

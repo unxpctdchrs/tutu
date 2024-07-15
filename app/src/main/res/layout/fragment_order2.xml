@@ -118,9 +118,10 @@
                 android:layout_marginTop="5dp"/>
 
             <TextView
+                android:id="@+id/tv_order_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tutorial Pengerjaan Tugas Via Chat Durasi 30 menit"
+                android:text="@string/s_order_details"
                 android:textColor="@color/gray"
                 style="@style/titlePoppinsMedium"
                 android:textSize="13sp"
@@ -143,9 +144,10 @@
                     android:layout_weight="1"/>
 
                 <TextView
+                    android:id="@+id/tv_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rp. 15.000"
+                    android:text="@string/d_total"
                     style="@style/titlePoppinsMedium"
                     android:textColor="@color/gray"
                     android:textSize="12sp"/>
@@ -200,18 +202,33 @@
             app:strokeColor="@color/dark_blue"
             app:strokeWidth="1dp"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_next"
+        <FrameLayout
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="@string/next"
             android:layout_weight="1"
             android:layout_marginHorizontal="30dp"
-            android:layout_marginVertical="20dp"
-            android:backgroundTint="@color/dark_blue"
-            style="@style/titlePoppinsMedium"
-            android:textSize="15sp"
-            app:cornerRadius="7dp"
-            android:textColor="@color/white"/>
+            android:layout_marginVertical="20dp">
+
+            <ProgressBar
+                android:id="@+id/loader"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:translationZ="5dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/white"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_next"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/next"
+                android:backgroundTint="@color/dark_blue"
+                style="@style/titlePoppinsMedium"
+                android:textSize="15sp"
+                app:cornerRadius="7dp"
+                android:textColor="@color/white"/>
+        </FrameLayout>
     </LinearLayout>
 </LinearLayout>

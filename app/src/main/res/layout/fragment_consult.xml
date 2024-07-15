@@ -9,7 +9,36 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="30dp"
+        android:gravity="center|start">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_back"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            app:icon="@drawable/ic_back"
+            app:iconSize="42dp"
+            android:layout_marginStart="-30dp"
+            android:backgroundTint="@android:color/transparent"
+            android:outlineSpotShadowColor="@android:color/transparent"
+            android:outlineAmbientShadowColor="@android:color/transparent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/consultation"
+            style="@style/titlePoppinsMedium"
+            android:textSize="20sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="3dp"/>
+    </LinearLayout>
+
     <SearchView
+        android:id="@+id/sv_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center|top"
@@ -60,11 +89,24 @@
         </FrameLayout>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_mentors"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/mentor_layout"
-        android:layout_marginHorizontal="26dp"/>
+        android:layout_marginHorizontal="26dp">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_mentors"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/mentor_layout"/>
+
+        <ProgressBar
+            android:id="@+id/loader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/dark_blue"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+    </FrameLayout>
 </LinearLayout>

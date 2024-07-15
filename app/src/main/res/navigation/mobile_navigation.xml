@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_navigation_message_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_navigation_message_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
     <fragment
         android:id="@+id/consultFragment"
@@ -54,6 +57,9 @@
             android:name="roomId"
             app:argType="string"
             android:defaultValue="roomId" />
+        <action
+            android:id="@+id/action_chatFragment_to_navigation_message"
+            app:destination="@id/navigation_message" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
@@ -71,22 +77,56 @@
             android:name="ratings"
             app:argType="float"
             android:defaultValue="0.0" />
-        <action
-            android:id="@+id/action_orderFragment_to_consultFragment"
-            app:destination="@id/consultFragment" />
+        <argument
+            android:name="mentorId"
+            app:argType="string"
+            android:defaultValue="mentorId" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment2"
         android:name="com.tuners.tutu.ui.main_students.home.consult.order.OrderFragment2"
         android:label="fragment_order2"
         tools:layout="@layout/fragment_order2" >
+        <argument
+            android:name="total"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="username"
+            app:argType="string"
+            android:defaultValue="username" />
+        <argument
+            android:name="ratings"
+            app:argType="float"
+            android:defaultValue="0.0" />
+        <argument
+            android:name="method"
+            app:argType="string"
+            android:defaultValue="method" />
+        <argument
+            android:name="duration"
+            app:argType="string"
+            android:defaultValue="duration" />
+        <argument
+            android:name="mentorId"
+            app:argType="string"
+            android:defaultValue="mentorId" />
         <action
-            android:id="@+id/action_orderFragment2_to_orderFragment"
-            app:destination="@id/orderFragment" />
+            android:id="@+id/action_orderFragment2_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
     <fragment
         android:id="@+id/orderHistoryFragment"
         android:name="com.tuners.tutu.ui.main_students.home.consult.orderhistory.OrderHistoryFragment"
         android:label="fragment_order_history"
-        tools:layout="@layout/fragment_order_history" />
+        tools:layout="@layout/fragment_order_history" >
+        <action
+            android:id="@+id/action_orderHistoryFragment_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.tuners.tutu.ui.main_students.home.consult.orderhistory.details.OrderDetailsFragment"
+        android:label="fragment_order_details"
+        tools:layout="@layout/fragment_order_details" />
 </navigation>

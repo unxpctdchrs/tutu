@@ -78,4 +78,19 @@
     <string name="type">Ketik Pesan</string>
     <string name="placeholder_chat_details">Kita belajar lewat zoom ya, Silahkan join ke zoom</string>
     <string name="transaction_history">Riwayat Transaksi</string>
+    <string name="order_details">Detail Pesanan</string>
+    <string name="payment_details">Detail Pembayaran</string>
+    <string name="transaction_time">Waktu Transaksi</string>
+    <string name="consultation_fee">Biaya Konsultasi</string>
+    <string name="application_fee">Biaya Penyedia Aplikasi</string>
+    <string name="total">Total</string>
+    <string name="s_transaction_time">%s</string>
+    <string name="d_consultation_fee">%d</string>
+    <string name="d_application_fee">%d</string>
+    <string name="d_total">%d</string>
+    <string name="s_order_details">Tutorial Pengerjaan Tugas %s Durasi %s</string>
+    <string name="consultation">Konsultasi</string>
+    <string name="success">Berhasil!</string>
+    <string name="start_a_chat_with_mentor">Mulai Percakapan dengan Mentor!</string>
+    <string name="no_transaction_yet">Belum Ada Transaksi</string>
 </resources>

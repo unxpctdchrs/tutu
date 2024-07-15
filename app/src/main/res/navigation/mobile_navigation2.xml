@@ -28,5 +28,14 @@
         android:id="@+id/chatFragment2"
         android:name="com.tuners.tutu.ui.main_students.message.chat.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="username"
+            app:argType="string"
+            android:defaultValue="username" />
+        <argument
+            android:name="roomId"
+            app:argType="string"
+            android:defaultValue="roomId" />
+    </fragment>
 </navigation>

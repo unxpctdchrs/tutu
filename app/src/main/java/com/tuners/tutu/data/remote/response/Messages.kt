@@ -9,4 +9,5 @@ data class Messages(
     val chatroomId: String,
     val timestamp: Timestamp,
     val message: String,
+    val senderId: String
 )

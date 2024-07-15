@@ -33,7 +33,8 @@
                app:iconSize="42dp"
                android:layout_marginStart="-15dp"
                android:backgroundTint="@android:color/transparent"
-               android:outlineSpotShadowColor="@android:color/transparent"/>
+               android:outlineSpotShadowColor="@android:color/transparent"
+               android:outlineAmbientShadowColor="@android:color/transparent"/>
 
            <com.google.android.material.card.MaterialCardView
                android:layout_width="60dp"
@@ -112,7 +113,8 @@
                 android:layout_height="50dp"
                 app:icon="@drawable/ic_send"
                 android:backgroundTint="@android:color/transparent"
-                android:outlineSpotShadowColor="@android:color/transparent"/>
+                android:outlineSpotShadowColor="@android:color/transparent"
+                android:outlineAmbientShadowColor="@android:color/transparent"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout >
