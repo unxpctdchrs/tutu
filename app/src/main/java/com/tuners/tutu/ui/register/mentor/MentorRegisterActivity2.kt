@@ -61,8 +61,7 @@ class MentorRegisterActivity2 : AppCompatActivity() {
         registerViewModel.registerResponse.observe(this) { register ->
             if (!register.error) {
                 Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@MentorRegisterActivity2, LoginActivity::class.java))
-                finish()
+                startActivity(Intent(this@MentorRegisterActivity2, MentorRegisterActivity3::class.java))
             }
         }
 

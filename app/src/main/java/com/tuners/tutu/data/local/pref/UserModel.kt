@@ -14,5 +14,6 @@ data class UserModel(
     val phoneNumber: String,
     val role: String,
     val balance: Int,
+    val accountIsChecked: Boolean,
     val isLoggedIn: Boolean = false
 ): Parcelable

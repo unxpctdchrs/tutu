@@ -14,6 +14,7 @@ import com.tuners.tutu.R
 import com.tuners.tutu.data.local.pref.UserModel
 import com.tuners.tutu.databinding.ActivityLoginBinding
 import com.tuners.tutu.helper.ViewModelFactory
+import com.tuners.tutu.ui.main_admin.AdminMainActivity
 import com.tuners.tutu.ui.main_mentors.MainMentorActivity
 import com.tuners.tutu.ui.main_students.MainActivity
 import com.tuners.tutu.ui.register.RegisterActivity
@@ -51,6 +52,7 @@ class LoginActivity : AppCompatActivity() {
                         phoneNumber = user.loginResult.first().phoneNumber,
                         role = user.loginResult.first().role,
                         balance = user.loginResult.first().balance,
+                        accountIsChecked = user.loginResult.first().accountIsChecked,
                         isLoggedIn = true
                     )
                     loginViewModel.saveSession(userToSave)
@@ -65,6 +67,9 @@ class LoginActivity : AppCompatActivity() {
             } else if (user.isLoggedIn && user.role == "mentor"){
                 startActivity(Intent(this@LoginActivity, MainMentorActivity::class.java))
                 finish()
+            } else if (user.isLoggedIn && user.role == "admin") {
+                startActivity(Intent(this@LoginActivity, AdminMainActivity::class.java))
+                finish()
             }
             Log.d("isMentor", user.role)
         }
@@ -75,7 +80,6 @@ class LoginActivity : AppCompatActivity() {
 
         binding.tvBtnRegister.setOnClickListener {
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
-            finish()
         }
 
         loginViewModel.isLoading.observe(this) { isLoading ->

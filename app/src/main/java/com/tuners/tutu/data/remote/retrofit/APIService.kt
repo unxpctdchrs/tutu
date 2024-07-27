@@ -4,6 +4,8 @@ import com.tuners.tutu.data.remote.response.ChatsResponse
 import com.tuners.tutu.data.remote.response.CreateChatResponse
 import com.tuners.tutu.data.remote.response.LoginResponse
 import com.tuners.tutu.data.remote.response.MentorListResponse
+import com.tuners.tutu.data.remote.response.MentorToCheckResponse
+import com.tuners.tutu.data.remote.response.MentorsToCheck
 import com.tuners.tutu.data.remote.response.MessageResponse
 import com.tuners.tutu.data.remote.response.PlaceOrderResponse
 import com.tuners.tutu.data.remote.response.RegisterResponse
@@ -57,11 +59,20 @@ interface APIService {
     @GET("mentors")
     fun getMentors(): Call<MentorListResponse>
 
+    @GET("mentors_to_check")
+    fun getMentorsToCheck(): Call<MentorToCheckResponse>
+
     // search mentor
     @GET("mentors/search")
     fun searchMentors(
         @Query("username") username: String
     ): Call<MentorListResponse>
+
+    // to update userIsChecked
+    @PATCH("mentor/{mentorId}")
+    fun approveMentor(
+        @Path("mentorId") mentorId: String
+    ): Call<UserUpdateResponse>
 
     // user page
     @GET("chats/{userId}")

@@ -61,6 +61,7 @@ class MentorRegisterActivity : AppCompatActivity() {
                 phoneNumber = binding.edtPhonenumber.text.toString().trim(),
                 role = "mentor",
                 balance = 0,
+                accountIsChecked = false,
                 jenjangPendidikan = targetDidik
             )
             val intent = Intent(this@MentorRegisterActivity, MentorRegisterActivity2::class.java)

@@ -9,6 +9,8 @@ import com.tuners.tutu.data.remote.response.ChatsResponse
 import com.tuners.tutu.data.remote.response.CreateChatResponse
 import com.tuners.tutu.data.remote.response.LoginResponse
 import com.tuners.tutu.data.remote.response.MentorListResponse
+import com.tuners.tutu.data.remote.response.MentorToCheckResponse
+import com.tuners.tutu.data.remote.response.MentorsToCheck
 import com.tuners.tutu.data.remote.response.MessageResponse
 import com.tuners.tutu.data.remote.response.PlaceOrderResponse
 import com.tuners.tutu.data.remote.response.RegisterResponse
@@ -208,6 +210,32 @@ class Repository private constructor(
         })
     }
 
+    private val _mentorsToCheck = MutableLiveData<MentorToCheckResponse>()
+    val mentorsToCheck: LiveData<MentorToCheckResponse> get() = _mentorsToCheck
+
+    fun getMentorsToCheck() {
+        _mentorsLoading.value = true
+        val client = apiService.getMentorsToCheck()
+        client.enqueue(object : Callback<MentorToCheckResponse> {
+            override fun onResponse(
+                call: Call<MentorToCheckResponse>,
+                response: Response<MentorToCheckResponse>
+            ) {
+                _mentorsLoading.value = false
+                if (response.isSuccessful) {
+                    _mentorsToCheck.value = response.body()
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<MentorToCheckResponse>, t: Throwable) {
+                _mentorsLoading.value = false
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+
     // search mentors
     fun searchMentors(username: String) {
         _mentorsLoading.value = true
@@ -227,6 +255,35 @@ class Repository private constructor(
 
             override fun onFailure(call: Call<MentorListResponse>, t: Throwable) {
                 _mentorsLoading.value = false
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+    }
+
+    // update userIsChecked(mentor)
+    private val _approveMentor = MutableLiveData<UserUpdateResponse>()
+    val approveMentor: LiveData<UserUpdateResponse> get() = _approveMentor
+    private val _approveLoading = MutableLiveData<Boolean>()
+    val approveLoading: LiveData<Boolean> get() = _approveLoading
+
+    fun approveMentor(mentorId: String) {
+        _approveLoading.value = true
+        val client = apiService.approveMentor(mentorId)
+        client.enqueue(object : Callback<UserUpdateResponse> {
+            override fun onResponse(
+                call: Call<UserUpdateResponse>,
+                response: Response<UserUpdateResponse>
+            ) {
+                _approveLoading.value = false
+                if (response.isSuccessful) {
+                    _approveMentor.value = response.body()
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<UserUpdateResponse>, t: Throwable) {
+                _approveLoading.value = false
                 Log.e(TAG, "onFailure: ${t.message.toString()}")
             }
         })

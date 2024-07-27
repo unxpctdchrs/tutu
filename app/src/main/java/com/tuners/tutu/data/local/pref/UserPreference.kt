@@ -24,6 +24,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
             preferences[PHONE_KEY] = user.phoneNumber
             preferences[ROLE_KEY] = user.role
             preferences[BALANCE_KEY] = user.balance
+            preferences[ACCOUNTISCHECKED_KEY] = user.accountIsChecked
             preferences[IS_LOGGED_IN_KEY] = user.isLoggedIn
         }
     }
@@ -40,6 +41,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
                 preferences[PHONE_KEY] ?: "",
                 preferences[ROLE_KEY] ?: "",
                 preferences[BALANCE_KEY] ?: 0,
+                preferences[ACCOUNTISCHECKED_KEY] ?: false,
                 preferences[IS_LOGGED_IN_KEY] ?: false
             )
         }
@@ -64,6 +66,7 @@ class UserPreference private constructor(private val dataStore: DataStore<Prefer
         private val PHONE_KEY = stringPreferencesKey("phoneNumber")
         private val ROLE_KEY = stringPreferencesKey("role")
         private val BALANCE_KEY = intPreferencesKey("balance")
+        private val ACCOUNTISCHECKED_KEY = booleanPreferencesKey("accountIsChecked")
         private val IS_LOGGED_IN_KEY = booleanPreferencesKey("isLoggedIn")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreference {

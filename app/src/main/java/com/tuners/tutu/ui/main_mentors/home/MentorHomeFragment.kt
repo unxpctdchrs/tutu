@@ -35,6 +35,7 @@ class MentorHomeFragment : Fragment() {
         mainMentorViewModel.getSession().observe(viewLifecycleOwner) { user ->
             binding?.tvWelcome?.text = getString(R.string.welcome, user.name)
             binding?.tvBalance?.text = getString(R.string.balance, user.balance.toString().withCurrencyFormat())
+            binding?.mcvAccountUsageInfo?.visibility = if (!user.accountIsChecked) View.VISIBLE else View.GONE
         }
 
         binding?.btnIncomingOrders?.setOnClickListener {

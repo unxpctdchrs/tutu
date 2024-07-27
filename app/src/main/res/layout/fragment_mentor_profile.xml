@@ -156,7 +156,7 @@
                                     android:maxLines="1"
                                     android:paddingHorizontal="15dp"
                                     android:textColor="@color/dark_blue"
-                                    android:textColorHint="@color/dark_blue"
+                                    android:textColorHint="@color/light_blue"
                                     android:textSize="10sp"
                                     tools:ignore="SmallSp" />
 
@@ -172,7 +172,7 @@
                                     android:maxLines="1"
                                     android:paddingHorizontal="15sp"
                                     android:textColor="@color/dark_blue"
-                                    android:textColorHint="@color/dark_blue"
+                                    android:textColorHint="@color/light_blue"
                                     android:textSize="10sp"
                                     tools:ignore="SmallSp" />
 
@@ -188,7 +188,7 @@
                                     android:maxLines="1"
                                     android:paddingHorizontal="15sp"
                                     android:textColor="@color/dark_blue"
-                                    android:textColorHint="@color/dark_blue"
+                                    android:textColorHint="@color/light_blue"
                                     android:textSize="10sp"
                                     tools:ignore="SmallSp" />
 
@@ -204,7 +204,7 @@
                                     android:maxLines="1"
                                     android:paddingHorizontal="15sp"
                                     android:textColor="@color/dark_blue"
-                                    android:textColorHint="@color/dark_blue"
+                                    android:textColorHint="@color/light_blue"
                                     android:textSize="10sp"
                                     tools:ignore="SmallSp" />
 
@@ -220,7 +220,7 @@
                                     android:maxLines="1"
                                     android:paddingHorizontal="15sp"
                                     android:textColor="@color/dark_blue"
-                                    android:textColorHint="@color/dark_blue"
+                                    android:textColorHint="@color/light_blue"
                                     android:textSize="10sp"
                                     tools:ignore="SmallSp" />
                             </LinearLayout>

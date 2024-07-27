@@ -93,4 +93,14 @@
     <string name="success">Berhasil!</string>
     <string name="start_a_chat_with_mentor">Mulai Percakapan dengan Mentor!</string>
     <string name="no_transaction_yet">Belum Ada Transaksi</string>
+    <string name="desc_mentor_reg_3">Kami akan melakukan seleksi terhadap data kamu selama 2-4 hari kedepan. Kamu dapat masuk ke akun yang sudah kamu buat untuk melihat apakah kamu diterima / tidak.</string>
+    <string name="back_to_login">Kembali ke halaman login</string>
+    <string name="account_usage_info">Data kamu masih kami periksa nih.. Harap bersabar ya!</string>
+    <string name="approve">Approve</string>
+    <string name="optional">Opsional</string>
+    <string name="portfolio">Portofolio</string>
+    <string name="cv">CV</string>
+    <string name="ktp">KTP</string>
+    <string name="pasfoto">Pasfoto</string>
+    <string name="desc_adm">Nanti hasilnya disini</string>
 </resources>

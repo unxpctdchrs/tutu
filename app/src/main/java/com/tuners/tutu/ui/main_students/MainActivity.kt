@@ -74,13 +74,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // TODO: mungkin start activitynya dijadikan di login aja
         mainViewModel.getSession().observe(this) { user ->
             if (!user.isLoggedIn) {
                 startActivity(Intent(this@MainActivity, LoginActivity::class.java))
-                finish()
-            } else if (user.role == "mentor") {
-                startActivity(Intent(this@MainActivity, MainMentorActivity::class.java))
                 finish()
             }
         }

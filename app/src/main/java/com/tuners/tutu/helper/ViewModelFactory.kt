@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.tuners.tutu.data.Repository
 import com.tuners.tutu.di.Injection
 import com.tuners.tutu.ui.login.LoginViewModel
+import com.tuners.tutu.ui.main_admin.AdminMainViewModel
 import com.tuners.tutu.ui.main_mentors.MainMentorViewModel
 import com.tuners.tutu.ui.main_mentors.message.MentorMessageViewModel
 import com.tuners.tutu.ui.main_mentors.profile.MentorProfileViewModel
@@ -45,6 +46,9 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.N
             }
             modelClass.isAssignableFrom(MentorMessageViewModel::class.java) -> {
                 MentorMessageViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(AdminMainViewModel::class.java) -> {
+                AdminMainViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel Class: " + modelClass.name)
         }

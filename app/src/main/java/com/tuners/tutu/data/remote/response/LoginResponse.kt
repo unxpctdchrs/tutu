@@ -16,6 +16,9 @@ data class LoginResponse(
 
 data class LoginResultItem(
 
+	@field:SerializedName("accountIsChecked")
+	val accountIsChecked: Boolean,
+
 	@field:SerializedName("address")
 	val address: String,
 
@@ -48,9 +51,6 @@ data class LoginResultItem(
 
 	@field:SerializedName("jenjangPendidikan")
 	val jenjangPendidikan: String,
-
-	@field:SerializedName("isMentor")
-	val isMentor: Boolean,
 
 	@field:SerializedName("email")
 	val email: String,

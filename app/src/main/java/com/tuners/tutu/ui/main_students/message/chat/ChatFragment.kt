@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tuners.tutu.R
 import com.tuners.tutu.adapters.MessageAdapter
 import com.tuners.tutu.data.remote.response.Messages
+import com.tuners.tutu.data.remote.supabase.SupabaseConfig
 import com.tuners.tutu.databinding.FragmentChatBinding
 import com.tuners.tutu.helper.ViewModelFactory
 import com.tuners.tutu.ui.main_students.MainViewModel
@@ -42,14 +43,7 @@ class ChatFragment : Fragment() {
         ViewModelFactory.getInstance(requireContext())
     }
 
-    val supabase = createSupabaseClient(
-        supabaseUrl = "https://ipxppqajryhicuiigiaa.supabase.co",
-        supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlweHBwcWFqcnloaWN1aWlnaWFhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjAwODUyMDgsImV4cCI6MjAzNTY2MTIwOH0.9oGZMzp-QKx8xx6QZEcIoxSdrQAj6VQ2HqJT8YNYyHo"
-    ) {
-        install(Postgrest)
-        install(Realtime)
-        defaultSerializer = JacksonSerializer()
-    }
+    private val supabase = SupabaseConfig.getSupabaseClient()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,13 +70,13 @@ class ChatFragment : Fragment() {
             binding?.edtChat?.setText("")
         }
 
-        val flow: Flow<List<Messages>> = supabase.from("messages").selectAsFlow(
+        val messages: Flow<List<Messages>> = supabase.from("messages").selectAsFlow(
             Messages::messageId,
             filter = FilterOperation("chatroomId", FilterOperator.EQ, data.roomId)
         )
 
         lifecycleScope.launch {
-            flow.collect {
+            messages.collect {
                 for (message in it) {
                     Log.d("MESSAGE", message.message)
                 }
